@@ -1,0 +1,7 @@
+* 梦幻登陆器
+梦幻西游登陆器（32位）
+    - 梦幻西游ONLINE
+
+但是进程名：my.exe D:\Program File(x86)\梦幻西游\bin\my.exe
+
+详细信息，原始文件名：D:\Program File(x86)\梦幻西游\bin\xylaunch.exe
