@@ -26,4 +26,4 @@ target_link_libraries(
 
 include(GoogleTest)
 gtest_discover_tests(hello_test)
-## set the admin require for Window executable.
+target_link_libraries(hello_test ${OpenCV_LIBS})

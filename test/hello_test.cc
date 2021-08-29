@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include <TlHelp32.h>
 #include <iostream>
+#include <opencv2/opencv.hpp>
 
 // Demonstrate some basic assertions.
 TEST(HelloTest, BasicAssertions) {
@@ -60,6 +61,34 @@ static void ListProcessModules(DWORD pid) {
     } while (Module32Next(hModuleSnap, &me32));
 
     CloseHandle(hModuleSnap);
+}
+
+void captureAndDisplay(HWND hwnd) {
+    auto sourceDc = GetDC(hwnd);
+    auto distDc = CreateCompatibleDC(sourceDc);
+
+    auto dstBitmap = CreateCompatibleBitmap(sourceDc, 0, 0);
+
+    SelectObject(distDc, dstBitmap);
+
+    BitBlt(distDc, 0, 0, 200, 200, sourceDc, 0, 0, SRCCOPY);
+
+    RECT  windowSize;
+    GetClientRect(hwnd, &windowSize);
+    auto height = windowSize.bottom;
+    auto width = windowSize.right;
+
+    cv::Mat mat;
+    mat.create(height, width, CV_8UC4);
+    // can we convert it?
+
+    BITMAPINFOHEADER bi;
+
+    GetDIBits(distDc, dstBitmap, 0, height, mat.data, (BITMAPINFO *)&bi, DIB_RGB_COLORS);
+
+    DeleteDC(distDc);
+    cv::imshow("test", mat);
+    cv::waitKey(0);
 }
 
 // https://docs.microsoft.com/en-us/windows/win32/toolhelp/taking-a-snapshot-and-viewing-processes
