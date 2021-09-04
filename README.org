@@ -1,3 +1,8 @@
+Is this the right where?
+
+* TODOS
+- how about show the live preview?
+
 * Links
 - https://docs.microsoft.com/en-us/windows/win32/toolhelp/taking-a-snapshot-and-viewing-processes
 - https://docs.microsoft.com/en-us/windows/win32/gdi/capturing-an-image
