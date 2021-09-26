@@ -1,3 +1,5 @@
+Currently 2021-9-26 working on.
+
 * TODOS
 ** how about show the live preview?
 ** show the preview window.
