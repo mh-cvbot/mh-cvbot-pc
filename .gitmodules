@@ -1,0 +1,3 @@
+[submodule ".\\external\\easybot"]
+	path = .\\external\\easybot
+	url = git@github.com:huhuang03/easybot.git

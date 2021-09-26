@@ -5,6 +5,8 @@
 #ifndef MH_TOOL_PREVIEW_WINDOW_H
 #define MH_TOOL_PREVIEW_WINDOW_H
 
+#include <easybot/easybot.h>
+
 
 class PreviewWindow {
 private:
