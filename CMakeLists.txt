@@ -2,6 +2,14 @@ cmake_minimum_required(VERSION 3.12)
 
 project(mh-tool)
 
+if (NOT DEFINED ENV{VCPKG_ROOT})
+    message(Please set the vcpkg_root env)
+else()
+    if (NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+        set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+    endif()
+endif()
+
 # find the opencv
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
