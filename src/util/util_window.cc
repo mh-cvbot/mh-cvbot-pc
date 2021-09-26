@@ -2,7 +2,7 @@
 // Created by huhua on 2021/8/8.
 //
 
-#include "../include/util_window.h"
+#include <mh-tool/util_window.h>
 
 HBITMAP windowTakeHBitmap(HWND hwnd) {
     RECT rect;
