@@ -2,11 +2,17 @@
 // Created by huhua on 2021/8/7.
 //
 #include <iostream>
+#include <QApplication>
+#include <QPushButton>
 
-int main() {
+#include "./App.h"
+
+int main(int argc, char **argv) {
     std::cout << "hello main" << std::endl;
-    // ok, how to do this?
+    QApplication q(argc, argv);
 
-    // can we find the process?
-    return 0;
+    App app;
+    app.show();
+
+    return q.exec();
 }
