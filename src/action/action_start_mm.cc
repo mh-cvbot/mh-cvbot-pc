@@ -7,4 +7,5 @@
 std::string ActionStartMM::action() {
     // ok, how we start the mm?
     // First we need the admin privileges.
+    return "";
 }

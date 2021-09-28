@@ -7,3 +7,4 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 target_link_libraries(mh-tool ${OpenCV_LIBS} easybot Qt5::Widgets)
 
+SET_TARGET_PROPERTIES(mh-tool PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
