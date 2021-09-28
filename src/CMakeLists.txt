@@ -1,14 +1,23 @@
-FILE(GLOB_RECURSE SCR *.cpp *.h *.hpp *.c *.cc)
+FILE(GLOB_RECURSE SRC_LIB *.cpp *.h *.hpp *.c *.cc)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-add_executable(mh-tool ${SCR})
-target_include_directories(mh-tool PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+# fuck you!
+# ok, now create the lib.
+
+message(${SRC_LIB})
+list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
+
+add_library(mh-tool-lib ${SRC_LIB})
+target_include_directories(mh-tool-lib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
+target_link_libraries(mh-tool-lib ${OpenCV_LIBS} easybot Qt5::Widgets)
 
-target_link_libraries(mh-tool ${OpenCV_LIBS} easybot Qt5::Widgets)
+
+add_executable(mh-tool ${SRC_LIB} main.cc)
+target_link_libraries(mh-tool mh-tool-lib)
 
 SET_TARGET_PROPERTIES(mh-tool PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")

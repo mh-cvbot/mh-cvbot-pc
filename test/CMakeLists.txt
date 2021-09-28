@@ -25,7 +25,7 @@ function(addTest name)
     )
 
     gtest_discover_tests(${name})
-    target_link_libraries(${name} ${OpenCV_LIBS})
+    target_link_libraries(${name} ${OpenCV_LIBS} mh-tool-lib)
 endfunction()
 
 
