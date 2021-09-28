@@ -1,5 +1,9 @@
 FILE(GLOB_RECURSE SCR *.cpp *.h *.hpp *.c *.cc)
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
 add_executable(mh-tool ${SCR})
 target_include_directories(mh-tool PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 

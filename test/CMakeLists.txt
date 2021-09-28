@@ -11,19 +11,25 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
+include(GoogleTest)
 
-add_executable(
-        hello_test
-        hello_test.cc
-)
+function(addTest name)
+    add_executable(
+            ${name}
+            ${name}.cc
+    )
 
+    target_link_libraries(
+            ${name}
+            gtest_main
+    )
+
+    gtest_discover_tests(${name})
+    target_link_libraries(${name} ${OpenCV_LIBS})
+endfunction()
+
+
+addTest(hello_test)
 SET_TARGET_PROPERTIES(hello_test PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
 
-target_link_libraries(
-        hello_test
-        gtest_main
-)
-
-include(GoogleTest)
-gtest_discover_tests(hello_test)
-target_link_libraries(hello_test ${OpenCV_LIBS})
+addTest(test_mm)
