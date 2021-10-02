@@ -4,14 +4,12 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-# fuck you!
-# ok, now create the lib.
-
 message(${SRC_LIB})
 list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
 
 add_library(mh-tool-lib ${SRC_LIB})
-target_include_directories(mh-tool-lib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+# public and interface will not work
+target_include_directories(mh-tool-lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 target_link_libraries(mh-tool-lib ${OpenCV_LIBS} easybot Qt5::Widgets)

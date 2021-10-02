@@ -13,6 +13,6 @@ class MM {
 public:
     bool hasInstalled();
 
-    std::string getMainExePath();
+    std::string getInstallPath();
 };
 #endif //MH_TOOL_MM_H

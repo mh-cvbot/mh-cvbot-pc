@@ -26,10 +26,10 @@ function(addTest name)
 
     gtest_discover_tests(${name})
     target_link_libraries(${name} ${OpenCV_LIBS} mh-tool-lib)
+    target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+    SET_TARGET_PROPERTIES(${name} PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
 endfunction()
 
 
 addTest(hello_test)
-SET_TARGET_PROPERTIES(hello_test PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
-
 addTest(test_mm)

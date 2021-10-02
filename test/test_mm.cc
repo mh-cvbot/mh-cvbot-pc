@@ -3,7 +3,10 @@
 //
 
 #include <gtest/gtest.h>
+#include <mh-tool/mm.h>
+#include <iostream>
 
 TEST(test_mm, isInstalled) {
-
+    MM mm;
+    std::cout << mm.getInstallPath() << std::endl;
 }
