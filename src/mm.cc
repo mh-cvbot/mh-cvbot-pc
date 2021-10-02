@@ -6,11 +6,12 @@
 #include <Windows.h>
 #include <iostream>
 #include <conio.h>
+#include <mh-tool/util.h>
 
 bool MM::hasInstalled() {
     return false;
 }
-#include <windows.h>
+
 #include <stdio.h>
 #include <tchar.h>
 
@@ -105,27 +106,6 @@ void QueryKey(HKEY hKey)
  * can I throw an exception?
  */
 std::string MM::getInstallPath() {
-//    HKEY hTestKey;
-//    if( RegOpenKeyEx( HKEY_CURRENT_USER,
-//                      TEXT("SOFTWARE\\Microsoft\\Assistance\\Client\\1.0\\Settings"),
-//                      0,
-//                      KEY_READ,
-//                      &hTestKey) == ERROR_SUCCESS
-//            )
-//    {
-//        QueryKey(hTestKey);
-//    } else {
-//        std::cout << "open key failed" << std::endl;
-//    }
-//
-//
-//    RegCloseKey(hTestKey);
-//    // ok, let's impl this.
-//    // First method: search the driver. Not good?
-//
-//    // Second method. search the regex? Ok, let's try this method
-//    const auto REG_PATH = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility Assistant\\Store";
-
     HKEY rootKey;
     auto rst = RegOpenKeyEx(HKEY_CURRENT_USER,
                             TEXT("Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility Assistant\\Store"),
@@ -167,31 +147,6 @@ std::string MM::getInstallPath() {
             &cbSecurityDescriptor,   // security descriptor
             &ftLastWriteTime);       // last write time
 
-    // Enumerate the subkeys, until RegEnumKeyEx fails.
-
-    if (cSubKeys)
-    {
-        printf( "\nNumber of subkeys: %d\n", cSubKeys);
-
-        for (i=0; i<cSubKeys; i++)
-        {
-            cbName = MAX_KEY_LENGTH;
-            retCode = RegEnumKeyEx(rootKey, i,
-                                   achKey,
-                                   &cbName,
-                                   NULL,
-                                   NULL,
-                                   NULL,
-                                   &ftLastWriteTime);
-            if (retCode == ERROR_SUCCESS)
-            {
-                _tprintf(TEXT("(%d) %s\n"), i+1, achKey);
-            }
-        }
-    }
-
-    // Enumerate the key values.
-
     if (cValues)
     {
         printf( "\nNumber of values: %d\n", cValues);
@@ -208,9 +163,13 @@ std::string MM::getInstallPath() {
                                    NULL,
                                    NULL);
 
+
             if (retCode == ERROR_SUCCESS )
             {
-                _tprintf(TEXT("(%d) %s\n"), i+1, achValue);
+                if (strEndsWith(std::string(achValue), "mhtab.exe")) {
+                    RegCloseKey(rootKey);
+                    return std::string(achValue);
+                }
             }
         }
     }
