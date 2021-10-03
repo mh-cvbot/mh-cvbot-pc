@@ -9,6 +9,5 @@
 TEST(test_mm, isInstalled) {
     MH mm;
     std::cout << mm.getInstallPath() << std::endl;
-    getchar();
-//    std::cout << mm.getPath().launcherPath() << std::endl;
+    std::cout << mm.getPath().launcherPath() << std::endl;
 }

@@ -167,7 +167,8 @@ std::string MH::getInstallPath() {
             {
                 if (strEndsWith(std::string(achValue), "mhtab.exe")) {
                     RegCloseKey(rootKey);
-                    return std::string(achValue);
+                    // ok, remove the mhtab.
+                    return boost::filesystem::path(achValue).parent_path().string();
                 }
             }
         }
@@ -175,7 +176,7 @@ std::string MH::getInstallPath() {
 
     RegCloseKey(rootKey);
 
-    return std::string();
+    return "";
 }
 
 MhPath MH::getPath() {
