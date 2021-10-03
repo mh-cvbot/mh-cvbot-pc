@@ -2,13 +2,12 @@
 // Created by huhua on 2021/9/28.
 //
 
-#include <mh-tool/mm.h>
+#include <mh-tool/mh/mh.h>
 #include <Windows.h>
 #include <iostream>
-#include <conio.h>
 #include <mh-tool/util.h>
 
-bool MM::hasInstalled() {
+bool MH::hasInstalled() {
     return false;
 }
 
@@ -105,7 +104,7 @@ void QueryKey(HKEY hKey)
 /**
  * can I throw an exception?
  */
-std::string MM::getInstallPath() {
+std::string MH::getInstallPath() {
     HKEY rootKey;
     auto rst = RegOpenKeyEx(HKEY_CURRENT_USER,
                             TEXT("Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility Assistant\\Store"),
@@ -177,4 +176,8 @@ std::string MM::getInstallPath() {
     RegCloseKey(rootKey);
 
     return std::string();
+}
+
+MhPath MH::getPath() {
+    return MhPath(this->getInstallPath());
 }
