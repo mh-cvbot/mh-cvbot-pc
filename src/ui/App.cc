@@ -14,6 +14,7 @@
 #include <QToolBar>
 #include <QPushButton>
 #include "./component/log/log_view.h"
+#include <easybot/easybot.h>
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -42,13 +43,17 @@ void App::createToolBars() {
     auto *btStop = new QPushButton("停止", this);
     btStop->setEnabled(false);
     toolbar->addWidget(btStop);
+
+    connect(btStart, &QPushButton::clicked, this, &App::start);
 }
 
 void App::start() {
+    // 开始的逻辑怎么写合适？
+    auto mhmainProcessId = eb::findProcessId("mhmain.exe");
+    std::cout << "mhmainProcessId: " << mhmainProcessId << std::endl;
 }
 
 void App::stop() {
-
 }
 
 void App::createDocker() {

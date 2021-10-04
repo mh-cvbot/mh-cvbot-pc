@@ -12,6 +12,7 @@ private:
     void createToolBars();
     void createDocker();
 
+private slots:
     void start();
     void stop();
 
