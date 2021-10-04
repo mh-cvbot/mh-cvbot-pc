@@ -13,6 +13,10 @@
  */
 class MH {
 public:
+    int startedCount();
+
+    void start();
+
     bool hasInstalled();
 
     std::string getInstallPath();

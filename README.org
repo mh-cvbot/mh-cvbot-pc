@@ -1,4 +1,5 @@
 * TODOS
+**
 ** add a menu to main window.
 ** how about show the live preview?
 ** show the preview window.

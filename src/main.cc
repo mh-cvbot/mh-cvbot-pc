@@ -5,10 +5,10 @@
 #include <QApplication>
 #include <QPushButton>
 
-#include "./App.h"
+#include "ui/App.h"
 
 int main(int argc, char **argv) {
-    std::cout << "hello main" << std::endl;
+    std::cout << "hello main 中文测试" << std::endl;
     QApplication q(argc, argv);
 
     App app;
