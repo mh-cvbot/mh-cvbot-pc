@@ -79,8 +79,6 @@ void QueryKey(HKEY hKey)
 
     if (cValues)
     {
-        printf( "\nNumber of values: %d\n", cValues);
-
         for (i=0, retCode=ERROR_SUCCESS; i<cValues; i++)
         {
             cchValue = MAX_VALUE_NAME;
