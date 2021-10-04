@@ -7,6 +7,14 @@
 #include <QMainWindow>
 
 class App: public QMainWindow {
+private:
+    void createMenus();
+    void createToolBars();
+    void createDocker();
+
+    void start();
+    void stop();
+
 public:
     App();
 };

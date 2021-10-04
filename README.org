@@ -1,5 +1,7 @@
 * TODOS
-**
+** 好像对于现在的我来说，多个账号暂时太难了，所以我们做一个账号好了
+*** click start show not started or not login in status bar.
+
 ** add a menu to main window.
 ** how about show the live preview?
 ** show the preview window.
@@ -8,3 +10,4 @@
 * Links
 - https://docs.microsoft.com/en-us/windows/win32/toolhelp/taking-a-snapshot-and-viewing-processes
 - https://docs.microsoft.com/en-us/windows/win32/gdi/capturing-an-image
+- [[https://www.youtube.com/watch?v=BIZyxja3Qls][External Overlay in C++ | Works For ANY Game]]
