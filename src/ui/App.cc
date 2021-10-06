@@ -5,10 +5,10 @@
 #include "App.h"
 #include <iostream>
 #include <QApplication>
-#include <Qt>
 #include <QDesktopWidget>
-#include <mh-tool/util_qt.h>
-#include <QGuiApplication>
+#include <mh-tool/util/util_qt.h>
+#include <mh-tool/mh/mh.h>
+#include <mh-tool/robot/robot.h>
 #include <QScreen>
 #include <QDockWidget>
 #include <QToolBar>
@@ -16,6 +16,7 @@
 #include <QStatusBar>
 #include "./component/log/log_view.h"
 #include <easybot/easybot.h>
+
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -46,20 +47,67 @@ void App::createToolBars() {
     toolbar->addWidget(btStop);
 
     connect(btStart, &QPushButton::clicked, this, &App::start);
+    connect(btStop, &QPushButton::clicked, this, &App::stop);
 }
 
 void App::start() {
     this->hasStarted = true;
     this->refreshStartUi();
 
-    // 开始的逻辑怎么写合适？
-    auto mhmainProcessId = eb::findProcessId("mhmain.exe");
-    std::cout << "mhmainProcessId: " << mhmainProcessId << std::endl;
+    try {
+        // 开始的逻辑怎么写合适？
+//        auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
+        auto pMhTab = eb::Process::findByName(MH::MH_TAB_EXE);
+        auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
 
-    if (mhmainProcessId == 0) {
-        statusBar()->showMessage("请开启游戏");
-        stop();
-        return;
+        std::cout << "pid: " << pMhTab.getPid() << std::endl;
+        std::cout << "mhmain pid: " << pMhMain.getPid() << std::endl;
+
+        if (pMhTab.getPid() == 0) {
+            statusBar()->showMessage("请开启游戏");
+            stop();
+            return;
+        }
+
+        auto windows = pMhTab.getWindows();
+
+        if (windows.empty()) {
+            statusBar()->showMessage("没有找到任何窗口");
+            stop();
+            return;
+        }
+
+        for (const auto &window: windows) {
+            std::cout << "window: " << window << ", className: " << window.className << std::endl;
+        }
+
+        auto window = windows[0];
+        for (const auto &w: windows) {
+            if (w.rect.width == 1624) {
+                window = w;
+                break;
+            }
+        }
+
+        auto found = window.rect.width == 1624;
+        if (!found) {
+            statusBar()->showMessage("没有找到目标窗口");
+            stop();
+            return;
+        }
+
+        auto r = Robot(window);
+        if (eb::gbk2utf8(window.title).compare("梦幻西游 ONLINE") == 0)  {
+            statusBar()->showMessage("没有登录");
+            stop();
+            return;
+        }
+
+        statusBar()->showMessage("请继续完成逻辑");
+    } catch (std::runtime_error &err) {
+        std::cout << "has error: " << err.what() << std::endl;
+        this->hasStarted = false;
+        this->refreshStartUi();
     }
 }
 

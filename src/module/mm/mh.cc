@@ -5,17 +5,19 @@
 #include <mh-tool/mh/mh.h>
 #include <Windows.h>
 #include <iostream>
-#include <mh-tool/util.h>
-
-bool MH::hasInstalled() {
-    return false;
-}
-
+#include <mh-tool/util/util.h>
 #include <stdio.h>
 #include <tchar.h>
 
 #define MAX_KEY_LENGTH 255
 #define MAX_VALUE_NAME 16383
+
+std::string MH::MH_MAIN_EXE = "mhmain.exe";
+std::string MH::MH_TAB_EXE = "mhtab.exe";
+
+bool MH::hasInstalled() {
+    return false;
+}
 
 void QueryKey(HKEY hKey)
 {

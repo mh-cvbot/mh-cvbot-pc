@@ -13,6 +13,9 @@
  */
 class MH {
 public:
+    static std::string MH_MAIN_EXE;
+    static std::string MH_TAB_EXE;
+
     int startedCount();
 
     void start();
