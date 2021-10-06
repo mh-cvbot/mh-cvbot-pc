@@ -8,9 +8,6 @@
 #include "ui/App.h"
 
 int main(int argc, char **argv) {
-//    std::cout << "hello main 中文测试" << std::endl;
-    std::cout << "梦幻西游" << std::endl;
-    std::cout << utf8ToGbk("梦幻西游") << std::endl;
     QApplication q(argc, argv);
 
     App app;

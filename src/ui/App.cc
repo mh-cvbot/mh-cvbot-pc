@@ -77,19 +77,24 @@ void App::start() {
             return;
         }
 
-        for (const auto &window: windows) {
-            std::cout << "window: " << window << ", className: " << window.className << std::endl;
-        }
+//        for (const auto &window: windows) {
+//            // there is a hidden window which looks like the main window min, how can I distint that two.
+//            std::cout << "window: " << window << ", className: " << window.className
+//            << ", is win32 visible: " << IsWindowVisible(window.hwnd)
+//            << ", is inScreen: " << window.isInScreen()
+//            << std::endl;
+//        }
 
         auto window = windows[0];
         for (const auto &w: windows) {
-            if (w.rect.width == 1624) {
+            if (IsWindowVisible(w.hwnd)) {
+                std::cout << "is win visible" << std::endl;
                 window = w;
                 break;
             }
         }
 
-        auto found = window.rect.width == 1624;
+        auto found = IsWindowVisible(window.hwnd);
         if (!found) {
             statusBar()->showMessage("没有找到目标窗口");
             stop();
@@ -97,7 +102,7 @@ void App::start() {
         }
 
         auto r = Robot(window);
-        if (eb::gbk2utf8(window.title).compare("梦幻西游 ONLINE") == 0)  {
+        if (eb::gbk2utf8(window.title) == "梦幻西游 ONLINE")  {
             statusBar()->showMessage("没有登录");
             stop();
             return;
