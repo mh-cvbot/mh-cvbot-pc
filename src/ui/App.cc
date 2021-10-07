@@ -8,6 +8,7 @@
 #include <QDesktopWidget>
 #include <mh-tool/util/util_qt.h>
 #include <mh-tool/mh/mh.h>
+#include <mh-tool/util/util.h>
 #include <mh-tool/robot/robot.h>
 #include <QScreen>
 #include <QDockWidget>
@@ -15,7 +16,9 @@
 #include <QPushButton>
 #include <QStatusBar>
 #include "./component/log/log_view.h"
+#include <boost/filesystem.hpp>
 #include <easybot/easybot.h>
+#include <chrono>
 
 
 #define WIDTH 800
@@ -26,7 +29,7 @@ static void moveToRight(QMainWindow *window) {
     window->move(screen->size().width() - WIDTH, (screen->size().height() - HEIGHT) / 2);
 }
 
-App::App() {
+App::App(): window(eb::Window(nullptr)) {
     this->resize(WIDTH, HEIGHT);
     moveToRight(this);
 
@@ -42,12 +45,17 @@ void App::createToolBars() {
     addToolBar(toolbar);
     this->btStart = new QPushButton("开始", this);
     toolbar->addWidget(btStart);
+
     this->btStop = new QPushButton("停止", this);
     btStop->setEnabled(false);
     toolbar->addWidget(btStop);
 
     connect(btStart, &QPushButton::clicked, this, &App::start);
     connect(btStop, &QPushButton::clicked, this, &App::stop);
+
+    auto screenshot = new QPushButton("截图", this);
+    toolbar->addWidget(screenshot);
+    connect(screenshot, &QPushButton::clicked, this, &App::screenshot);
 }
 
 void App::start() {
@@ -77,15 +85,7 @@ void App::start() {
             return;
         }
 
-//        for (const auto &window: windows) {
-//            // there is a hidden window which looks like the main window min, how can I distint that two.
-//            std::cout << "window: " << window << ", className: " << window.className
-//            << ", is win32 visible: " << IsWindowVisible(window.hwnd)
-//            << ", is inScreen: " << window.isInScreen()
-//            << std::endl;
-//        }
-
-        auto window = windows[0];
+        this->window = windows[0];
         for (const auto &w: windows) {
             if (IsWindowVisible(w.hwnd)) {
                 std::cout << "is win visible" << std::endl;
@@ -101,10 +101,14 @@ void App::start() {
             return;
         }
 
+        auto subWindows = window.getSubWindows();
+        for (const auto &w: subWindows) {
+            std::cout << "sub window: " << w << std::endl;
+        }
+
         auto r = Robot(window);
         if (eb::gbk2utf8(window.title) == "梦幻西游 ONLINE")  {
             statusBar()->showMessage("没有登录");
-            stop();
             return;
         }
 
@@ -136,4 +140,18 @@ void App::refreshStartUi() {
         this->btStart->setEnabled(true);
         this->btStop->setEnabled(false);
     }
+}
+
+void App::screenshot() {
+    if (!this->hasStarted) {
+        std::cout << "not started" << std::endl;
+        return;
+    }
+    cv::Mat out;
+    window.screenshot(out);
+    std::string currentTime = std::to_string(currentTimeMilliseconds());
+    boost::filesystem::path savePath = boost::filesystem::current_path() / "runtime" / "screenshot" / (currentTime + ".bmp");
+    std::cout << "savePath: " << savePath << std::endl;
+    cv::imwrite(savePath.string(), out);
+    std::cout << "save success" << std::endl;
 }

@@ -3,15 +3,19 @@
 //
 #include <iostream>
 #include <QApplication>
-#include <mh-tool/util/util_string.h>
 
 #include "ui/App.h"
+#include <Windows.h>
 
 int main(int argc, char **argv) {
+    TCHAR NPath[MAX_PATH];
+    GetCurrentDirectory(MAX_PATH, NPath);
+    std::cout << "current dir: " << NPath << std::endl;
+
     QApplication q(argc, argv);
 
     App app;
     app.show();
 
-    return q.exec();
+    return QApplication::exec();
 }

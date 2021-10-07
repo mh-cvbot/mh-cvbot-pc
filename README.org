@@ -11,3 +11,4 @@
 - https://docs.microsoft.com/en-us/windows/win32/toolhelp/taking-a-snapshot-and-viewing-processes
 - https://docs.microsoft.com/en-us/windows/win32/gdi/capturing-an-image
 - [[https://www.youtube.com/watch?v=BIZyxja3Qls][External Overlay in C++ | Works For ANY Game]]
+- [[https://referencesource.microsoft.com/#System/services/monitoring/system/diagnosticts/ProcessManager.cs][IsMainWindow]]

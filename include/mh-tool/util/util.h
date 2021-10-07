@@ -10,4 +10,6 @@
 
 bool strEndsWith(const std::string &str1, const std::string &str2);
 
+unsigned __int64 currentTimeMilliseconds();
+
 #endif //MH_TOOL_UTIL_H

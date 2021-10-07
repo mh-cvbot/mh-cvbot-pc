@@ -6,6 +6,7 @@
 #define MH_TOOL_APP_H
 #include <QMainWindow>
 #include <QPushButton>
+#include <easybot/easybot.h>
 
 class App: public QMainWindow {
 private:
@@ -18,9 +19,13 @@ private:
 
     void refreshStartUi();
 
+    eb::Window window;
+
+
 private slots:
     void start();
     void stop();
+    void screenshot();
 
 public:
     App();
