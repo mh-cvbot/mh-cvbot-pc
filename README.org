@@ -1,11 +1,7 @@
 * TODOS
-** judge has login.
-** click start show not started or not login in status bar.
-
-** add a menu to main window.
+** how to struct the cv module?
 ** how about show the live preview?
-** show the preview window.
-*** choice the right processId.
+yes, but latter.
 
 * Links
 - https://docs.microsoft.com/en-us/windows/win32/toolhelp/taking-a-snapshot-and-viewing-processes
