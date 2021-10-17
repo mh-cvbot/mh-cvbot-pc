@@ -2,4 +2,5 @@ cmake-build-debug/
 .idea/
 *build*/
 .vscode/
-runtime/
+/runtime/
+test_data/

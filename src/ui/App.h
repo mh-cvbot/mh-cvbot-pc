@@ -7,6 +7,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <easybot/easybot.h>
+#include <mh-tool/module/mh/mh_window.h>
 
 class App: public QMainWindow {
 private:
@@ -16,10 +17,8 @@ private:
     void createMenus();
     void createToolBars();
     void createDocker();
-
     void refreshStartUi();
-
-    eb::Window window;
+    MhWindow *mhWindow;
 
 
 private slots:

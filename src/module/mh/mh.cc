@@ -2,12 +2,12 @@
 // Created by huhua on 2021/9/28.
 //
 
-#include <mh-tool/mh/mh.h>
 #include <Windows.h>
 #include <iostream>
 #include <mh-tool/util/util.h>
 #include <stdio.h>
 #include <tchar.h>
+#include <mh-tool/module/mh/mh.h>
 
 #define MAX_KEY_LENGTH 255
 #define MAX_VALUE_NAME 16383

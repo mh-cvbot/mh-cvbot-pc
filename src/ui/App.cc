@@ -7,7 +7,6 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <mh-tool/util/util_qt.h>
-#include <mh-tool/mh/mh.h>
 #include <mh-tool/util/util.h>
 #include <mh-tool/robot/robot.h>
 #include <QScreen>
@@ -19,6 +18,8 @@
 #include <boost/filesystem.hpp>
 #include <easybot/easybot.h>
 #include <chrono>
+#include <mh-tool/module/runtime/runtime.h>
+#include <mh-tool/module/mh/mh.h>
 
 
 #define WIDTH 800
@@ -29,7 +30,7 @@ static void moveToRight(QMainWindow *window) {
     window->move(screen->size().width() - WIDTH, (screen->size().height() - HEIGHT) / 2);
 }
 
-App::App(): window(eb::Window(nullptr)) {
+App::App() {
     this->resize(WIDTH, HEIGHT);
     moveToRight(this);
 
@@ -85,7 +86,7 @@ void App::start() {
             return;
         }
 
-        this->window = windows[0];
+        auto window = windows[0];
         for (const auto &w: windows) {
             if (IsWindowVisible(w.hwnd)) {
                 std::cout << "is win visible" << std::endl;
@@ -101,12 +102,8 @@ void App::start() {
             return;
         }
 
-        auto subWindows = window.getSubWindows();
-        for (const auto &w: subWindows) {
-            std::cout << "sub window: " << w << std::endl;
-        }
+        this->mhWindow = new MhWindow(window);
 
-        auto r = Robot(window);
         if (eb::gbk2utf8(window.title) == "梦幻西游 ONLINE")  {
             statusBar()->showMessage("没有登录");
             return;
@@ -147,11 +144,6 @@ void App::screenshot() {
         std::cout << "not started" << std::endl;
         return;
     }
-    cv::Mat out;
-    window.screenshot(out);
-    std::string currentTime = std::to_string(currentTimeMilliseconds());
-    boost::filesystem::path savePath = boost::filesystem::current_path() / "runtime" / "screenshot" / (currentTime + ".bmp");
-    std::cout << "savePath: " << savePath << std::endl;
-    cv::imwrite(savePath.string(), out);
-    std::cout << "save success" << std::endl;
+    auto window = this->mhWindow->contentWindow();
+    runtime::screenshot(window);
 }

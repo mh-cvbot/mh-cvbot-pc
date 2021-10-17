@@ -4,10 +4,8 @@
 
 #ifndef MH_TOOL_UTIL_WINDOW_H
 #define MH_TOOL_UTIL_WINDOW_H
-#include <Windows.h>
 #include <opencv2/opencv.hpp>
+#include <easybot/window.h>
 
-// caller response for release
-HBITMAP windowTakeHBitmap(HWND hwnd);
-void windowTakeImg(HWND  hwnd, cv::Mat out);
+void windowScreenshot(eb::Window *window);
 #endif //MH_TOOL_UTIL_WINDOW_H
