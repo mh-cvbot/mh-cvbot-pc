@@ -33,3 +33,5 @@ endfunction()
 
 addTest(hello_test)
 addTest(test_mm)
+
+# TODO copy the bmp files.

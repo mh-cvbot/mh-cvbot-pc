@@ -1,5 +1,7 @@
 * TODOS
-** how to struct the cv module?
+** let's do some cv and test.
+*** test the test image and show the right pos.
+
 ** how about show the live preview?
 yes, but latter.
 
