@@ -3,12 +3,13 @@
 //
 
 #include <mh/cv.h>
+#include <easybot/easybot.h>
 
 
 // how about namespace without indent?
 namespace mh {
 namespace cv {
-mh::modal::Pos pos(const ::cv::Mat &img) {
+eb::Pos pos(const ::cv::Mat &img) {
     // ok, let's do something.
 }
 }

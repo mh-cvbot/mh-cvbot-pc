@@ -6,10 +6,11 @@
 #define MH_TOOL_CV_H
 #include <opencv2/opencv.hpp>
 #include "modal/pos.h"
+#include <easybot/easybot.h>
 
 namespace mh {
     namespace cv {
-        mh::modal::Pos pos(const ::cv::Mat &img);
+        eb:: pos(const ::cv::Mat &img);
     }
 }
 #endif //MH_TOOL_CV_H
