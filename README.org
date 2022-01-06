@@ -1,3 +1,13 @@
+Ok, it's time to struct the project.
+How about like script file(python, js) use the module concept
+
+Ok, let try,
+
+For example, the pos. use
+mh::cv::Img
+mh::mode::Pos mh::cv::pos(const cv::img &img);
+mh::model::Pos
+
 * TODOS
 ** let's do some cv and test.
 *** test the test image and show the right pos.

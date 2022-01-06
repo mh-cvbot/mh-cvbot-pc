@@ -1,0 +1,18 @@
+# ok, this is the config.yaml
+---
+name: 0.bmp
+pos:
+  # 0, 1, 2: little, middle, big
+  type: 1
+  name: 桃源村
+  x: 18
+  y: 78
+
+---
+name: 1.bmp
+pos:
+  # 0, 1, 2: little, middle, big
+  type: 1
+  name: 桃源村
+  x: 32
+  y: 76

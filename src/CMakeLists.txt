@@ -1,4 +1,4 @@
-FILE(GLOB_RECURSE SRC_LIB *.cpp *.h *.hpp *.c *.cc)
+FILE(GLOB_RECURSE SRC_LIB *.cpp *.h *.hpp *.c *.cc ${CMAKE_CURRENT_SOURCE_DIR}/../include/*.h ${CMAKE_CURRENT_SOURCE_DIR}/../include/*.hpp)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
