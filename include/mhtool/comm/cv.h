@@ -4,13 +4,15 @@
 
 #ifndef MH_TOOL_CV_H
 #define MH_TOOL_CV_H
-#include <opencv2/opencv.hpp>
-#include "modal/pos.h"
-#include <easybot/easybot.h>
+#include <mhtool/comm/modal/pos_indicator.h>
 
+#include <opencv2/opencv.hpp>
+
+// any better name?
 namespace mh {
-    namespace cv {
-        eb:: pos(const ::cv::Mat &img);
-    }
+namespace cv {
+PosIndicator posIndicator(const ::cv::Mat &mat);
 }
+}
+
 #endif //MH_TOOL_CV_H
