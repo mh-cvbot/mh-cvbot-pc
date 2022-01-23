@@ -4,7 +4,7 @@
 
 #ifndef MH_TOOL_CV_H
 #define MH_TOOL_CV_H
-#include <mhtool/comm/modal/pos_indicator.h>
+#include <mhtool/comm/pos_indicator/pos_indicator.h>
 
 #include <opencv2/opencv.hpp>
 

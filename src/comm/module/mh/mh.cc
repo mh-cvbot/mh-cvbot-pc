@@ -4,7 +4,7 @@
 
 #include <Windows.h>
 #include <iostream>
-#include <mh-tool/util/util.h>
+#include <mhtool/util/util.h>
 #include <stdio.h>
 #include <tchar.h>
 #include <mh-tool/module/mh/mh.h>

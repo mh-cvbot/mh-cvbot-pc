@@ -2,7 +2,7 @@
 // Created by huhua on 2021/10/6.
 //
 
-#include <mh-tool/util/util_string.h>
+#include <mhtool/util/util_string.h>
 #include <Windows.h>
 
 std::string utf8ToGbk(const char *src_str) {

@@ -3,7 +3,7 @@
 //
 
 #include <mh-tool/module/runtime/runtime.h>
-#include <mh-tool/util/util.h>
+#include <mhtool/util/util.h>
 #include <boost/filesystem/path.hpp>
 #include <boost/filesystem/operations.hpp>
 

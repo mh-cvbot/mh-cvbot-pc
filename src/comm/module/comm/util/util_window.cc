@@ -2,8 +2,8 @@
 // Created by huhua on 2021/8/8.
 //
 
-#include <mh-tool/util/util_window.h>
-#include <mh-tool/util/util.h>
+#include <mhtool/util/util_window.h>
+#include <mhtool/util/util.h>
 #include <boost/filesystem/path.hpp>
 #include <boost/filesystem/operations.hpp>
 
