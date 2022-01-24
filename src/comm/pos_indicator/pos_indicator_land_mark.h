@@ -12,8 +12,10 @@ class PosIndicatorLandMark {
   PosColors *_pcs = nullptr;
 
  public:
-  PosIndicatorLandMark(const cv::Point2i &pos);
+  explicit PosIndicatorLandMark(const cv::Point2i &pos);
   ~PosIndicatorLandMark();
+
+  PosColors* pcs();
 };
 
 #endif //MH_TOOL_SRC_COMM_CV_POS_INDICATOR_LAND_MARK_H_

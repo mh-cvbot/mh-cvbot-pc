@@ -7,6 +7,7 @@
 #include <mhtool/comm/pos_indicator/pos_indicator.h>
 
 #include <opencv2/opencv.hpp>
+#include "./cv/cv_pos_indicator.h"
 
 // any better name?
 namespace mh {
