@@ -28,10 +28,7 @@ function(addTest name needRoot)
     target_link_libraries(${name} ${OpenCV_LIBS} mh-tool-lib)
     target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
     if(${needRoot})
-        message("Need root")
         SET_TARGET_PROPERTIES(${name} PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
-    else()
-        message("not need root")
     endif()
 endfunction()
 
@@ -39,5 +36,3 @@ endfunction()
 addTest(hello_test FALSE)
 addTest(test_mm FALSE)
 addTest(test_cv FALSE)
-
-# TODO copy the bmp files.
