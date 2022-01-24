@@ -7,7 +7,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <easybot/easybot.h>
-#include <mh-tool/module/mh/mh_window.h>
+#include "mhtool/comm/mh/mh_window.h"
 
 class App: public QMainWindow {
 private:

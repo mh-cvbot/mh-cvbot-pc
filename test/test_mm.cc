@@ -3,12 +3,12 @@
 //
 
 #include <gtest/gtest.h>
-#include <mh-tool/mh/mh.h>
-#include <mh-tool/mh/mh_path.h>
 #include <iostream>
 #include <algorithm>
-#include <boost/algorithm/string/replace.hpp>
+//#include <boost/algorithm/string/replace.hpp>
 #include <Windows.h>
+#include "mhtool/comm/mh/mh.h"
+#include "mhtool/comm/mh/mh_path.h"
 
 static void startApp1(MH& mh) {
     MhPath path = mh.getPath();

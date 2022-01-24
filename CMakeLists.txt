@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(mh-tool)
 
 if (NOT DEFINED ENV{VCPKG_ROOT})
     message(FATAL_ERROR Please set the vcpkg_root env)
@@ -9,6 +8,8 @@ else()
         set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
     endif()
 endif()
+
+project(mh-tool)
 
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")

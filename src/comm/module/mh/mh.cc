@@ -7,7 +7,7 @@
 #include <mhtool/util/util.h>
 #include <stdio.h>
 #include <tchar.h>
-#include <mh-tool/module/mh/mh.h>
+#include <mhtool/comm/mh/mh.h>
 
 #define MAX_KEY_LENGTH 255
 #define MAX_VALUE_NAME 16383

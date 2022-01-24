@@ -2,10 +2,10 @@
 // Created by huhua on 2021/10/17.
 //
 
-#include <mh-tool/module/mh/mh.h>
-#include <mh-tool/module/mh/mh_window.h>
-
 #include <utility>
+#include "mhtool/comm/mh/mh_window.h"
+#include "easybot/window.h"
+#include "mhtool/comm/mh/mh.h"
 
 MhWindow::MhWindow(eb::Window mainWindow): mainWindow(std::move(mainWindow)), _contentWindow(nullptr) {
     auto subWindows = this->mainWindow.getSubWindows();

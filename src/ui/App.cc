@@ -6,20 +6,17 @@
 #include <iostream>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <mh-tool/util/util_qt.h>
-#include <mh-tool/util/util.h>
-#include <mh-tool/robot/robot.h>
 #include <QScreen>
 #include <QDockWidget>
 #include <QToolBar>
 #include <QPushButton>
 #include <QStatusBar>
 #include "./component/log/log_view.h"
+#include "mhtool/comm/mh/mh.h"
+#include "mhtool/comm/runtime/runtime.h"
 #include <boost/filesystem.hpp>
 #include <easybot/easybot.h>
 #include <chrono>
-#include <mh-tool/module/runtime/runtime.h>
-#include <mh-tool/module/mh/mh.h>
 
 
 #define WIDTH 800

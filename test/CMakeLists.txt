@@ -13,7 +13,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 include(GoogleTest)
 
-function(addTest name)
+function(addTest name needRoot)
     add_executable(
             ${name}
             ${name}.cc
@@ -27,12 +27,17 @@ function(addTest name)
     gtest_discover_tests(${name})
     target_link_libraries(${name} ${OpenCV_LIBS} mh-tool-lib)
     target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
-    SET_TARGET_PROPERTIES(${name} PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
+    if(${needRoot})
+        message("Need root")
+        SET_TARGET_PROPERTIES(${name} PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
+    else()
+        message("not need root")
+    endif()
 endfunction()
 
 
-addTest(hello_test)
-addTest(test_mm)
-addTest(test_cv)
+addTest(hello_test FALSE)
+addTest(test_mm FALSE)
+addTest(test_cv FALSE)
 
 # TODO copy the bmp files.
