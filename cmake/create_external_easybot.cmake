@@ -10,4 +10,3 @@ else()
             COMMAND "ln -s ../easybot external/easybot"
     )
 endif()
-
