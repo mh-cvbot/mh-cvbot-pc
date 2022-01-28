@@ -4,7 +4,7 @@
 
 #ifndef MH_TOOL_CV_H
 #define MH_TOOL_CV_H
-#include <easybot/easybot.h>
+#include "easybot/easybot.h"
 #include "./cv_img.h"
 
 namespace mt {

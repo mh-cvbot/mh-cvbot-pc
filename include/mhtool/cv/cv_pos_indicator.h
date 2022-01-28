@@ -4,7 +4,7 @@
 
 #ifndef MH_TOOL_INCLUDE_MHTOOL_COMM_CV_CV_POS_INDICATOR_H_
 #define MH_TOOL_INCLUDE_MHTOOL_COMM_CV_CV_POS_INDICATOR_H_
-#include <mhtool/comm/pos_indicator/pos_indicator_state.h>
+#include "mhtool/comm/pos_indicator/pos_indicator_state.h"
 #include <opencv2/core.hpp>
 
 struct StateRst {
