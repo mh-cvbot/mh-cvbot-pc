@@ -85,14 +85,14 @@ void App::start() {
 
         auto window = windows[0];
         for (const auto &w: windows) {
-            if (IsWindowVisible(w.hwnd)) {
+            if (w.isVisible()) {
                 std::cout << "is win visible" << std::endl;
                 window = w;
                 break;
             }
         }
 
-        auto found = IsWindowVisible(window.hwnd);
+        auto found = window.isVisible();
         if (!found) {
             statusBar()->showMessage("没有找到目标窗口");
             stop();
