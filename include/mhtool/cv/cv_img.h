@@ -5,14 +5,16 @@
 #ifndef MH_TOOL_CV_IMG_H
 #define MH_TOOL_CV_IMG_H
 
+#include <opencv2/core.hpp>
+
 namespace mt {
     namespace cv {
         class CVImg {
         private:
-            cv::Mat _origin;
+            ::cv::Mat _origin;
 
         public:
-            CVImg(cv::Mat origin);
+            CVImg(::cv::Mat origin);
         };
     }
 }

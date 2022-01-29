@@ -17,5 +17,7 @@ class PosColors {
 
  public:
   bool check(const cv::Mat & mat);
+
+  friend std::ostream& operator<<(std::ostream& os, const PosColors& thiz);
 };
 #endif //MH_TOOL_INCLUDE_MHTOOL_COMM_POS_COLORS_H_

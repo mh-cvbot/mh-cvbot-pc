@@ -1,38 +1,49 @@
 //
 // Created by huhua on 2022/1/24.
 //
-#include <mhtool/comm/cv.h>
+#include <mhtool/cv.h>
 #include <easybot/easybot.h>
 #include <mhtool/comm/pos_colors.h>
-#include <mhtool/comm/cv/cv_pos_indicator.h>
+#include <mhtool/cv/cv_pos_indicator.h>
 #include "./pos_indicator_land_mark.h"
-
-
+#include <tesseract/baseapi.h>
 // how about namespace without indent?
 namespace mh {
 namespace cv {
 
-PosIndicatorLandMark landMarkLittle({9, 50});
+// I don't have any better idea.
+PosIndicatorLandMark _middle({9, 50});
 
 // Ok, now you can write a text.
-StateRst posIndicatorState(const ::cv::Mat &mat) {
-  if (landMarkLittle.pcs()->check(mat)) {
-    return {
-      true,
-      mh::PosIndicatorState::MIDDLE,
-    };
+bool posIndicatorState(const ::cv::Mat &mat, mh::PosIndicatorState *out) {
+  if (_middle.pcs()->check(mat)) {
+    *out = mh::PosIndicatorState::MIDDLE;
+    return true;
   }
 
-  return {
-    false,
-    mh::PosIndicatorState ::LITTLE,
-  };
+  return false;
 }
 
-PosIndicator posIndicator(const ::cv::Mat &mat) {
-  // first need judge the type of PosIndicator state.
-  // first we need get the state.
-  return PosIndicator();
+bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
+  auto tmp = posIndicatorState(mat, &out->state);
+  if (!tmp) {
+    return false;
+  }
+
+  if (out->state == PosIndicatorState::MIDDLE) {
+    // ok, first create the right image
+    // do you want fix hsv?
+
+
+//    auto tess =
+    // how to cv?
+    // let first try tesseract.
+
+    // ok, the pos.
+    // and write the mess code here.
+  }
+  return false;
 }
+
 }
 }

@@ -5,11 +5,6 @@
 #ifndef MH_TOOL_CV_H
 #define MH_TOOL_CV_H
 #include "easybot/easybot.h"
-#include "./cv_img.h"
-
-namespace mt {
-    namespace cv {
-        eb::Coordinate cvCoord(const mt::cv::CVImg &img);
-    }
-}
+#include "./cv/cv_img.h"
+#include "./cv/cv_pos_indicator.h"
 #endif //MH_TOOL_CV_H

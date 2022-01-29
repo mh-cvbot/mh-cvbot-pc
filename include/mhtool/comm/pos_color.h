@@ -8,6 +8,7 @@
 
 class PosColor {
  public:
+  // ok, if you are vec3b, you should be bgr
   PosColor(cv::Point2i pPos, const cv::Vec3b& pColor, int pDst = 0);
   cv::Point2i pos;
   cv::Vec3b color;
@@ -16,5 +17,7 @@ class PosColor {
 
  public:
   bool check(const cv::Mat &mat);
+
+  friend std::ostream& operator<<(std::ostream& os, const PosColor& thiz);
 };
 #endif //MH_TOOL_INCLUDE_MHTOOL_COMM_POS_COLOR_H_
