@@ -14,3 +14,10 @@ TEST(testCV, posIndicatorState) {
   ASSERT_TRUE(rst);
   ASSERT_EQ(state, mh::PosIndicatorState::MIDDLE);
 }
+
+TEST(testCV, posIndicator) {
+  auto img = cv::imread("./test_data/0.bmp");
+  ASSERT_TRUE(!img.empty());
+  mh::PosIndicator pi;
+  mh::cv::posIndicator(img, &pi);
+}

@@ -7,4 +7,5 @@
 #include "easybot/easybot.h"
 #include "./cv/cv_img.h"
 #include "./cv/cv_pos_indicator.h"
+#include "./cv/cv_util.h"
 #endif //MH_TOOL_CV_H

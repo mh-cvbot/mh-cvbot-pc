@@ -7,6 +7,8 @@
 #include <mhtool/cv/cv_pos_indicator.h>
 #include "./pos_indicator_land_mark.h"
 #include <tesseract/baseapi.h>
+#include <opencv2/opencv.hpp>
+#include <mhtool/cv.h>
 // how about namespace without indent?
 namespace mh {
 namespace cv {
@@ -33,14 +35,22 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
   if (out->state == PosIndicatorState::MIDDLE) {
     // ok, first create the right image
     // do you want fix hsv?
+    tesseract::TessBaseAPI *tess = new tesseract::TessBaseAPI();
+    if (tess->Init(nullptr, "chi_sim+eng")) {
+      std::cerr << "tess init failed." << std::endl;
+      return false;
+    }
 
-
-//    auto tess =
-    // how to cv?
-    // let first try tesseract.
-
-    // ok, the pos.
-    // and write the mess code here.
+    ::cv::Mat roi(mat, ::cv::Range(23, 43), ::cv::Range(18, 130));
+    ::cv::Mat _mat;
+    mh::cv::white(roi, _mat);
+    ::cv::imshow("img", _mat);
+    // ok, get the img
+    tess->SetPageSegMode(tesseract::PSM_SINGLE_LINE);
+    tess->SetImage(_mat.data, _mat.cols, _mat.rows, _mat.channels(), _mat.step);
+    auto text = tess->GetUTF8Text();
+    std::cout << text << std::endl;
+    ::cv::waitKey(0);
   }
   return false;
 }
