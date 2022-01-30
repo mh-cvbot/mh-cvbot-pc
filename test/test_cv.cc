@@ -19,5 +19,9 @@ TEST(testCV, posIndicator) {
   auto img = cv::imread("./test_data/0.bmp");
   ASSERT_TRUE(!img.empty());
   mh::PosIndicator pi;
-  mh::cv::posIndicator(img, &pi);
+  auto rst = mh::cv::posIndicator(img, &pi);
+  ASSERT_TRUE(rst);
+  ASSERT_EQ(pi.state, mh::PosIndicatorState::MIDDLE);
+  ASSERT_EQ(pi.name, "桃源村");
+  ASSERT_EQ(pi.pos, cv::Point2i(18, 78));
 }
