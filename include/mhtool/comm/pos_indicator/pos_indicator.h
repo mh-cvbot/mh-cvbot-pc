@@ -10,9 +10,13 @@
 namespace mh {
 class PosIndicator {
  public:
-  cv::Point2i pos;
   std::string name;
+  cv::Point2i pos;
   PosIndicatorState state;
+
+  bool operator==(const mh::PosIndicator &other);
+  friend bool operator==(const mh::PosIndicator &thiz, const mh::PosIndicator &other);
+  friend std::ostream& operator<<(std::ostream& os, const PosIndicator& thiz);
 };
 }
 #endif //MH_TOOL_INCLUDE_MHTOOL_COMM_MODAL_POS_INDICATOR_H_

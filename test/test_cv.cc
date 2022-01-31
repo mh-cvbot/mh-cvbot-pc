@@ -15,13 +15,20 @@ TEST(testCV, posIndicatorState) {
   ASSERT_EQ(state, mh::PosIndicatorState::MIDDLE);
 }
 
-TEST(testCV, posIndicator) {
-  auto img = cv::imread("./test_data/0.bmp");
+static void testPosIndicator(const std::string &name, mh::PosIndicator pi) {
+  auto img = cv::imread("./test_data/" + name);
   ASSERT_TRUE(!img.empty());
-  mh::PosIndicator pi;
-  auto rst = mh::cv::posIndicator(img, &pi);
+  mh::PosIndicator _pi;
+  auto rst = mh::cv::posIndicator(img, &_pi);
+  std::cout << "_pi: " << _pi << std::endl;
   ASSERT_TRUE(rst);
-  ASSERT_EQ(pi.state, mh::PosIndicatorState::MIDDLE);
-  ASSERT_EQ(pi.name, "桃源村");
-  ASSERT_EQ(pi.pos, cv::Point2i(18, 78));
+  ASSERT_EQ(_pi, pi);
+//  ASSERT_EQ(pi.state, mh::PosIndicatorState::MIDDLE);
+//  ASSERT_EQ(pi.name, "桃源村");
+//  ASSERT_EQ(pi.pos, cv::Point2i(18, 78));
+}
+
+TEST(testCV, posIndicator) {
+  testPosIndicator("1.bmp", {"桃源村", {32, 76}, mh::PosIndicatorState::MIDDLE});
+//  testPosIndicator("0.bmp", {"桃源村", {18, 78}, mh::PosIndicatorState::MIDDLE});
 }

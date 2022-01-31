@@ -10,5 +10,20 @@ enum PosIndicatorState {
   MIDDLE,
   BIG,
 };
+
+inline std::ostream& operator<<(std::ostream& os, const mh::PosIndicatorState& thiz) {
+  switch (thiz) {
+    case mh::PosIndicatorState::LITTLE:
+      os << "little";
+      break;
+    case mh::PosIndicatorState::MIDDLE:
+      os << "middle";
+      break;
+    case mh::PosIndicatorState::BIG:
+      os << "big";
+      break;
+  }
+  return os;
+}
 }
 #endif //MH_TOOL_INCLUDE_MHTOOL_COMM_MODAL_POS_INDICATOR_STATE_H_

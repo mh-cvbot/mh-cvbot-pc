@@ -2,14 +2,12 @@
 // Created by huhua on 2022/1/24.
 //
 #include <mhtool/cv.h>
-#include <easybot/easybot.h>
 #include <mhtool/comm/pos_colors.h>
 #include <mhtool/cv/cv_pos_indicator.h>
 #include "./pos_indicator_land_mark.h"
 #include <tesseract/baseapi.h>
 #include <opencv2/opencv.hpp>
 #include <regex>
-#include <mhtool/cv.h>
 #include <boost/algorithm/string.hpp>
 // how about namespace without indent?
 namespace mh {
@@ -46,6 +44,7 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
     ::cv::Mat roi(mat, ::cv::Range(23, 43), ::cv::Range(18, 130));
     ::cv::Mat _mat;
     mh::cv::white(roi, _mat);
+    ::cv::imshow("test", _mat);
     // ok, get the img
     tess->SetPageSegMode(tesseract::PSM_SINGLE_LINE);
     tess->SetImage(_mat.data, _mat.cols, _mat.rows, _mat.channels(), _mat.step);
@@ -55,6 +54,7 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
     text.erase(std::remove(text.begin(), text.end(), ' '), text.end());
     boost::algorithm::trim(text);
     delete []_rstText;
+    std::cout << "text: " << text << std::endl;
 
     const std::regex r(R"~((.*)(\[(\d+),(\d+)\]))~");
 
