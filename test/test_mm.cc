@@ -5,42 +5,29 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <algorithm>
-//#include <boost/algorithm/string/replace.hpp>
-#include <Windows.h>
 #include "mhtool/comm/mh/mh.h"
 #include "mhtool/comm/mh/mh_path.h"
+#include <easybot/easybot.h>
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+#include <Windows.h>
+#endif
 
-static void startApp1(MH& mh) {
-    MhPath path = mh.getPath();
-    // additional information
-    STARTUPINFO si;
-    PROCESS_INFORMATION pi;
+static void startApp1(MH &mh);
 
-    // set the size of the structures
-    ZeroMemory( &si, sizeof(si) );
-    si.cb = sizeof(si);
-    ZeroMemory( &pi, sizeof(pi) );
-
-    // start the program up
-    CreateProcess( path.launcherPath().c_str(),   // the path
-                   "",        // Command line
-                   NULL,           // Process handle not inheritable
-                   NULL,           // Thread handle not inheritable
-                   FALSE,          // Set handle inheritance to FALSE
-                   0,              // No creation flags
-                   NULL,           // Use parent's environment block
-                   mh.getInstallPath().c_str(),           // Use parent's starting directory
-                   &si,            // Pointer to STARTUPINFO structure
-                   &pi             // Pointer to PROCESS_INFORMATION structure (removed extra parentheses)
-    );
-    // Close process and thread handles.
-    CloseHandle( pi.hProcess );
-    CloseHandle( pi.hThread );
+TEST(TestMM, screenshot) {
+  // ok, do the work.
+//  eb::Process::printAllProcess("mhmain.exe");
+  auto p = eb::Process::findByName("mhmain.exe");
+  auto w = p.getBiggestWindow();
+  cv::Mat mat;
+  w.screenshot(mat);
+  cv::imwrite("tmp.bmp", mat);
+//  std::cout << "p: " << p.getPid() << std::endl;
 }
 
 TEST(test_mm, isInstalled) {
-    MH mh;
-    startApp1(mh);
+  MH mh;
+  startApp1(mh);
 //    std::cout << mm.getInstallPath() << std::endl;
 //    std::cout << mm.getPath().launcherPath() << std::endl;
 //    auto myPath = mm.getPath().launcherPath();
@@ -50,5 +37,36 @@ TEST(test_mm, isInstalled) {
 ////    std::replace(myPath.begin(), myPath.end(), " ", "^ ");
 //    std::cout << "myPath: " << myPath << std::endl;
 //    system(myPath.c_str());
-    getchar();
+  getchar();
 }
+
+static void startApp1(MH &mh) {
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+  MhPath path = mh.getPath();
+  // additional information
+  STARTUPINFO si;
+  PROCESS_INFORMATION pi;
+
+  // set the size of the structures
+  ZeroMemory(&si, sizeof(si));
+  si.cb = sizeof(si);
+  ZeroMemory(&pi, sizeof(pi));
+
+  // start the program up
+  CreateProcess(path.launcherPath().c_str(),   // the path
+                "",        // Command line
+                NULL,           // Process handle not inheritable
+                NULL,           // Thread handle not inheritable
+                FALSE,          // Set handle inheritance to FALSE
+                0,              // No creation flags
+                NULL,           // Use parent's environment block
+                mh.getInstallPath().c_str(),           // Use parent's starting directory
+                &si,            // Pointer to STARTUPINFO structure
+                &pi             // Pointer to PROCESS_INFORMATION structure (removed extra parentheses)
+  );
+  // Close process and thread handles.
+  CloseHandle(pi.hProcess);
+  CloseHandle(pi.hThread);
+#endif
+}
+
