@@ -37,7 +37,8 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
     ::cv::Mat _mat;
     mh::cv::white(roi, _mat);
     _mat = ~_mat;
-//    ::cv::imshow("test", _mat);
+    ::cv::imshow("test", _mat);
+    ::cv::waitKey(0);
 
     tesseract::TessBaseAPI *tess = new tesseract::TessBaseAPI();
     if (tess->Init(nullptr, "chi_sim+eng")) {

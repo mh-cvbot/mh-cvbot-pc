@@ -21,6 +21,9 @@ TEST(TestMM, screenshot) {
   auto w = p.getBiggestWindow();
   cv::Mat mat;
   w.screenshot(mat);
+
+//  ::cv::Mat roi(mat, ::cv::Range(28, 628), ::cv::Range(0, 800));
+
   cv::imwrite("tmp.bmp", mat);
 //  std::cout << "p: " << p.getPid() << std::endl;
 }

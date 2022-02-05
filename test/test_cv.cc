@@ -26,6 +26,7 @@ static void testPosIndicator(const std::string &name, mh::PosIndicator pi) {
 }
 
 TEST(testCV, posIndicator) {
-  testPosIndicator("1.bmp", {"桃源村", {32, 76}, mh::PosIndicatorState::MIDDLE});
-  testPosIndicator("0.bmp", {"桃源村", {18, 78}, mh::PosIndicatorState::MIDDLE});
+//  testPosIndicator("0.bmp", {"桃源村", {18, 78}, mh::PosIndicatorState::MIDDLE});
+//  testPosIndicator("1.bmp", {"桃源村", {32, 76}, mh::PosIndicatorState::MIDDLE});
+  testPosIndicator("mac_0.bmp", {"桃源村", {53, 81}, mh::PosIndicatorState::MIDDLE});
 }
