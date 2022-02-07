@@ -22,9 +22,9 @@ TEST(TestMM, screenshot) {
   cv::Mat mat;
   w.screenshot(mat);
 
-//  ::cv::Mat roi(mat, ::cv::Range(28, 628), ::cv::Range(0, 800));
+  ::cv::Mat roi(mat, ::cv::Range(28, 628), ::cv::Range(0, 800));
 
-  cv::imwrite("tmp.bmp", mat);
+  cv::imwrite("tmp.bmp", roi);
 //  std::cout << "p: " << p.getPid() << std::endl;
 }
 
