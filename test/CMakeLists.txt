@@ -36,3 +36,5 @@ endfunction()
 addTest(hello_test FALSE)
 addTest(test_mm FALSE)
 addTest(test_cv FALSE)
+
+file(COPY )
