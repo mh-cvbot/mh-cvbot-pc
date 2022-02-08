@@ -2,12 +2,16 @@
 // Created by huhua on 2021/9/28.
 //
 
-#include <Windows.h>
+// hwo to handle the windows.h?
 #include <iostream>
 #include <mhtool/util/util.h>
 #include <stdio.h>
-#include <tchar.h>
 #include <mhtool/comm/mh/mh.h>
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+#include <tchar.h>
+#include <Windows.h>
+#endif
 
 #define MAX_KEY_LENGTH 255
 #define MAX_VALUE_NAME 16383
@@ -19,6 +23,7 @@ bool MH::hasInstalled() {
     return false;
 }
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 void QueryKey(HKEY hKey)
 {
     TCHAR    achKey[MAX_KEY_LENGTH];   // buffer for subkey name
@@ -100,11 +105,13 @@ void QueryKey(HKEY hKey)
         }
     }
 }
+#endif
 
 /**
  * can I throw an exception?
  */
 std::string MH::getInstallPath() {
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
     HKEY rootKey;
     auto rst = RegOpenKeyEx(HKEY_CURRENT_USER,
                             TEXT("Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility Assistant\\Store"),
@@ -175,6 +182,7 @@ std::string MH::getInstallPath() {
     }
 
     RegCloseKey(rootKey);
+#endif
 
     return "";
 }
@@ -185,6 +193,7 @@ MhPath MH::getPath() {
 
 void MH::start() {
     MhPath path = this->getPath();
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
     // additional information
     STARTUPINFO si;
     PROCESS_INFORMATION pi;
@@ -209,6 +218,7 @@ void MH::start() {
     // Close process and thread handles.
     CloseHandle( pi.hProcess );
     CloseHandle( pi.hThread );
+#endif
 }
 
 int MH::startedCount() {

@@ -9,6 +9,7 @@
 #include "./mh_path.h"
 
 /**
+ * sprice(biaoyang) you!
  * Should be single instance? strange.
  */
 class MH {

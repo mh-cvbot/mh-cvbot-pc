@@ -13,6 +13,9 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 include(GoogleTest)
 
+#do the copy
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test_data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 function(addTest name needRoot)
     add_executable(
             ${name}
@@ -36,5 +39,3 @@ endfunction()
 addTest(hello_test FALSE)
 addTest(test_mm FALSE)
 addTest(test_cv FALSE)
-
-file(COPY )

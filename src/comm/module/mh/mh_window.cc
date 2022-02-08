@@ -11,7 +11,8 @@ MhWindow::MhWindow(eb::Window mainWindow): mainWindow(std::move(mainWindow)), _c
     auto subWindows = this->mainWindow.getSubWindows();
     for (const auto &win: subWindows) {
         if (win.rect.width == MH::CONTENT_WIDTH && win.rect.height == MH::CONTENT_HEIGHT) {
-           this->_contentWindow = new eb::Window(win.hwnd);
+//           this->_contentWindow = new eb::Window(win.hwnd);
+          this->_contentWindow = new eb::Window(0);
         }
     }
 }

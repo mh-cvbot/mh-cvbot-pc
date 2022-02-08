@@ -10,5 +10,5 @@ Robot::Robot(eb::Window mainWindow): mainWindow(mainWindow) {
 }
 
 eb::Window Robot::getMainWindow() {
-    return eb::Window(nullptr);
+    return eb::Window(0);
 }

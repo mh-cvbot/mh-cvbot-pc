@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.12)
 
 
+# why you can configure?
+# can I show all the env?
 if (NOT DEFINED ENV{VCPKG_ROOT})
-    message(FATAL_ERROR Please set the vcpkg_root env)
+    message(FATAL_ERROR "Please set the vcpkg_root env")
 else()
     if (NOT DEFINED CMAKE_TOOLCHAIN_FILE)
         set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
@@ -20,6 +22,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+include(cmake/create_external_easybot.cmake)
 add_subdirectory(external/easybot)
 
 add_subdirectory(src)
