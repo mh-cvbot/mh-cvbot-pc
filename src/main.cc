@@ -5,7 +5,7 @@
 #include <QApplication>
 
 #include "ui/App.h"
-#include <Windows.h>
+#include <qt_windows.h>
 
 int main(int argc, char **argv) {
     TCHAR NPath[MAX_PATH];

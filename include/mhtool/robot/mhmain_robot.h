@@ -6,7 +6,7 @@
 #define MH_TOOL_MHMAIN_ROBOT_H
 #include <mh-tool/account/account.h>
 #include <mh-tool/account/role.h>
-#include <Windows.h>
+#include <qt_windows.h>
 
 class MhMainRobot {
 private:

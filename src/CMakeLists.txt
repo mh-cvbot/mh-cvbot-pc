@@ -10,7 +10,8 @@ list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
 
 message("CMAKE_SIZEOF_VOID_P: ${CMAKE_SIZEOF_VOID_P}")
 # why you not complain?
-find_package(Tesseract CONFIG REQUIRED)
+# Still I can't find the tesseract name.
+find_package(Tesseract REQUIRED)
 
 add_library(mh-tool-lib ${SRC_LIB})
 # public and interface will not work
@@ -20,7 +21,12 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 find_package(Boost REQUIRED COMPONENTS system filesystem)
 target_link_libraries(mh-tool-lib
-        ${OpenCV_LIBS} easybot Qt5::Widgets Boost::filesystem libtesseract)
+        ${OpenCV_LIBS} easybot Qt5::Widgets Boost::filesystem
+#        )
+        libtesseract)
+#        Tesseract::libtesseract)
+#        tesseract41)
+#target_link_libraries(mh-tool-lib PRIVATE libtesseract)
 
 
 add_executable(mh-tool ${SRC_LIB} main.cc)

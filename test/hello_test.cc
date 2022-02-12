@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include <Windows.h>
+#include <qt_windows.h>
 #include <TlHelp32.h>
 #include <iostream>
 #include <opencv2/opencv.hpp>

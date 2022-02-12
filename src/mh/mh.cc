@@ -2,7 +2,6 @@
 // Created by huhua on 2021/9/28.
 //
 
-// hwo to handle the windows.h?
 #include <iostream>
 #include <mhtool/util/util.h>
 #include <stdio.h>
@@ -10,7 +9,7 @@
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 #include <tchar.h>
-#include <Windows.h>
+#include <qt_windows.h>
 #endif
 
 #define MAX_KEY_LENGTH 255
