@@ -22,11 +22,7 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system filesystem)
 target_link_libraries(mh-tool-lib
         ${OpenCV_LIBS} easybot Qt5::Widgets Boost::filesystem
-#        )
         libtesseract)
-#        Tesseract::libtesseract)
-#        tesseract41)
-#target_link_libraries(mh-tool-lib PRIVATE libtesseract)
 
 
 add_executable(mh-tool ${SRC_LIB} main.cc)
