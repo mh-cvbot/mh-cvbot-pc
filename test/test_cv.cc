@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include <opencv2/opencv.hpp>
 #include <mhtool/cv.h>
-#include <mhtool/comm/pos_indicator/pos_indicator_state.h>
+#include <mhtool/comm/module/pos_indicator/pos_indicator_state.h>
 
 TEST(testCV, posIndicatorState) {
   auto img = cv::imread("./test_data/0.bmp");

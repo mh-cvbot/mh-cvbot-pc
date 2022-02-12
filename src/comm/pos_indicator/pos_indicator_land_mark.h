@@ -5,7 +5,7 @@
 #ifndef MH_TOOL_SRC_COMM_CV_POS_INDICATOR_LAND_MARK_H_
 #define MH_TOOL_SRC_COMM_CV_POS_INDICATOR_LAND_MARK_H_
 #include <opencv2/core.hpp>
-#include <mhtool/comm/pos_colors.h>
+#include <mhtool/comm/module/pos_colors.h>
 
 class PosIndicatorLandMark {
  private:

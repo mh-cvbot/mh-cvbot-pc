@@ -6,6 +6,10 @@ set(CMAKE_AUTOUIC ON)
 
 list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
 
+# ok, see the 32 or 64
+
+message("CMAKE_SIZEOF_VOID_P: ${CMAKE_SIZEOF_VOID_P}")
+# why you not complain?
 find_package(Tesseract CONFIG REQUIRED)
 
 add_library(mh-tool-lib ${SRC_LIB})

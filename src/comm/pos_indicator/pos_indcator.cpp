@@ -2,7 +2,7 @@
 // Created by th on 2022/1/31.
 //
 
-#include <mhtool/comm/pos_indicator/pos_indicator.h>
+#include <mhtool/comm/module/pos_indicator/pos_indicator.h>
 #include <iostream>
 
 bool mh::PosIndicator::operator==(const PosIndicator &other) {

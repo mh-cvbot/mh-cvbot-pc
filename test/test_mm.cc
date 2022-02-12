@@ -5,7 +5,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <algorithm>
-#include "mhtool/comm/mh/mh.h"
+#include "mhtool/mh/mh.h"
 #include "mhtool/comm/mh/mh_path.h"
 #include <easybot/easybot.h>
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)

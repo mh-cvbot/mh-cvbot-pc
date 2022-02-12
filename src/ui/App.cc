@@ -12,12 +12,12 @@
 #include <QPushButton>
 #include <QStatusBar>
 #include "./component/log/log_view.h"
-#include "mhtool/comm/mh/mh.h"
-#include "mhtool/comm/runtime/runtime.h"
+#include <mhtool/mh/mh.h>
+#include <mhtool/comm/module/runtime/runtime.h>
 #include <boost/filesystem.hpp>
 #include <easybot/easybot.h>
 #include <chrono>
-
+#include <mhtool/mh/mh_window.h>
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -99,7 +99,7 @@ void App::start() {
             return;
         }
 
-        this->mhWindow = new MhWindow(window);
+//        this->mhWindow = new MhWindow(window);
 
         if (eb::gbk2utf8(window.title) == "梦幻西游 ONLINE")  {
             statusBar()->showMessage("没有登录");
@@ -141,6 +141,6 @@ void App::screenshot() {
         std::cout << "not started" << std::endl;
         return;
     }
-    auto window = this->mhWindow->contentWindow();
-    runtime::screenshot(window);
+//    auto window = this->mhWindow->contentWindow();
+//    runtime::screenshot(window);
 }

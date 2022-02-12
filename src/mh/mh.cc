@@ -6,7 +6,7 @@
 #include <iostream>
 #include <mhtool/util/util.h>
 #include <stdio.h>
-#include <mhtool/comm/mh/mh.h>
+#include <mhtool/mh/mh.h>
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 #include <tchar.h>

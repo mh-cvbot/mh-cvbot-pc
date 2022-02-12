@@ -1,7 +1,5 @@
 * TODOS
-How about write the real logic?
-
-loop or
+Ok, let's write the real logic.
 
 ** how about show the live preview?
 yes, but latter.

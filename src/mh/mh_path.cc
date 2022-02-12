@@ -3,7 +3,7 @@
 //
 
 #include <boost/filesystem.hpp>
-#include "mhtool/comm/mh/mh_path.h"
+#include "mhtool/mh/mh_path.h"
 
 namespace fs = boost::filesystem;
 

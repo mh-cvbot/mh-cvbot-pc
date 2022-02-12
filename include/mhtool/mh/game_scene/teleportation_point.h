@@ -1,0 +1,12 @@
+//
+// Created by huhua on 2022/2/11.
+//
+
+#ifndef MH_TOOL_INCLUDE_MHTOOL_MH_GAME_SCENE_TELEPORTATION_POINT_H_
+#define MH_TOOL_INCLUDE_MHTOOL_MH_GAME_SCENE_TELEPORTATION_POINT_H_
+/**
+ * 简单的传送点。走上去就传送
+ */
+class TeleportationPoint {
+};
+#endif //MH_TOOL_INCLUDE_MHTOOL_MH_GAME_SCENE_TELEPORTATION_POINT_H_

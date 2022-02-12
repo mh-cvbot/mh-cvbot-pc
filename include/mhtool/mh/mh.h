@@ -9,8 +9,9 @@
 #include "./mh_path.h"
 
 /**
- * sprice(biaoyang) you!
  * Should be single instance? strange.
+ *
+ * Put city here??
  */
 class MH {
 public:

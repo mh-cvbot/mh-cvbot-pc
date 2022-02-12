@@ -13,7 +13,7 @@ class GameScene {
   std::string _name;
 
  public:
-  GameScene(const std::string &name);
+  GameScene(std::string name);
   inline std::string name() {return this->_name;}
 };
 }
