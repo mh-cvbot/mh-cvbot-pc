@@ -5,3 +5,6 @@
 但是进程名：my.exe D:\Program File(x86)\梦幻西游\bin\my.exe
 
 详细信息，原始文件名：D:\Program File(x86)\梦幻西游\bin\xylaunch.exe
+
+* Window
+- so strange that in spector the window is in mhmain, but in inspector is mhtab.

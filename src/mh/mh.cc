@@ -223,3 +223,10 @@ void MH::start() {
 int MH::startedCount() {
     return 0;
 }
+
+void MH::init(eb::Process pTab, eb::Process pMain) {
+  this->_pTab = pTab;
+  this->_pMain = pMain;
+
+  this->_pTab.getWindows();
+}

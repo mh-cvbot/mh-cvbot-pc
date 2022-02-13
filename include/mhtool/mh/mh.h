@@ -7,27 +7,33 @@
 
 #include <string>
 #include "./mh_path.h"
+#include <easybot/easybot.h>
 
 /**
- * Should be single instance? strange.
- *
- * Put city here??
+ * ok, for now, only consider for just on account
  */
 class MH {
-public:
-    static std::string MH_MAIN_EXE;
-    static std::string MH_TAB_EXE;
-    const static int CONTENT_WIDTH = 800;
-    const static int CONTENT_HEIGHT = 600;
+ private:
+  eb::Process _pTab;
+  eb::Process _pMain;
+  eb::Window _win;
+  eb::Window _gameWin;
 
-    int startedCount();
+ public:
+  void init(eb::Process pTab, eb::Process pMain);
+  static std::string MH_MAIN_EXE;
+  static std::string MH_TAB_EXE;
+  const static int CONTENT_WIDTH = 800;
+  const static int CONTENT_HEIGHT = 600;
 
-    void start();
+  int startedCount();
 
-    bool hasInstalled();
+  void start();
 
-    std::string getInstallPath();
+  bool hasInstalled();
 
-    MhPath getPath();
+  std::string getInstallPath();
+
+  MhPath getPath();
 };
 #endif //MH_TOOL_MH_H

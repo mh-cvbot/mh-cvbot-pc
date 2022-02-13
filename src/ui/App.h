@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <easybot/easybot.h>
 #include "mhtool/mh/mh_window.h"
+#include <mhtool/mh/mh_main_loop.h>
 
 class App: public QMainWindow {
 private:
@@ -19,6 +20,7 @@ private:
     void createDocker();
     void refreshStartUi();
     MhWindow *mhWindow;
+    MHMainLoop *mhMainLoop;
 
 
 private slots:
