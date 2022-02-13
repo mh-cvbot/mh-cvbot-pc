@@ -9,7 +9,7 @@
 
 void windowScreenshot(eb::Window *window) {
     cv::Mat out;
-    window->screenshot(out);
+    window->screenshot(out, 2);
     std::string currentTime = std::to_string(currentTimeMilliseconds());
     boost::filesystem::path savePath = boost::filesystem::current_path() / "runtime" / "screenshot" / (currentTime + ".bmp");
     std::cout << "savePath: " << savePath << std::endl;

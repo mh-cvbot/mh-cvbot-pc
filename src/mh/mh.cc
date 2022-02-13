@@ -230,3 +230,7 @@ void MH::init(eb::Process pTab, eb::Process pMain) {
 
   this->_pTab.getWindows();
 }
+
+MH::MH(): _pTab(0), _pMain(0), _gameWin(0), _win(0) {
+
+}

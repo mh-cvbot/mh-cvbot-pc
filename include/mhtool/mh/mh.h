@@ -20,6 +20,7 @@ class MH {
   eb::Window _gameWin;
 
  public:
+  MH();
   void init(eb::Process pTab, eb::Process pMain);
   static std::string MH_MAIN_EXE;
   static std::string MH_TAB_EXE;

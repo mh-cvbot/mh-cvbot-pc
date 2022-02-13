@@ -9,7 +9,7 @@
 namespace runtime {
     void screenshot(eb::Window *window) {
         cv::Mat out;
-        window->screenshot(out);
+        window->screenshot(out, 1);
         std::string currentTime = std::to_string(currentTimeMilliseconds());
         boost::filesystem::path savePath = boost::filesystem::current_path() / "runtime" / "screenshot" / (currentTime + ".bmp");
         cv::imwrite(savePath.string(), out);

@@ -49,7 +49,7 @@ void MHMainLoop::run() {
       auto gameWindow = subWindows[1];
 
       cv::Mat mat;
-      gameWindow.screenshot(mat);
+      gameWindow.screenshot(mat, 2);
       cv::imshow("main loop", mat);
       cv::waitKey(0);
 
