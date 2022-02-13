@@ -9,7 +9,6 @@
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 #include <tchar.h>
-#include <qt_windows.h>
 #endif
 
 #define MAX_KEY_LENGTH 255
@@ -224,13 +223,36 @@ int MH::startedCount() {
     return 0;
 }
 
-void MH::init(eb::Process pTab, eb::Process pMain) {
-  this->_pTab = pTab;
-  this->_pMain = pMain;
-
-  this->_pTab.getWindows();
-}
-
 MH::MH(): _pTab(0), _pMain(0), _gameWin(0), _win(0) {
 
+}
+
+void MH::init() {
+  try {
+    // 开始的逻辑怎么写合适？
+    auto pMhTab = eb::Process::findByName(MH::MH_TAB_EXE);
+    auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
+
+
+    if (pMhMain.getPid() == 0) {
+      return;
+    }
+
+    this->_win = pMhTab.getBiggestWindow();
+
+    auto subWindows = this->_win.getSubWindows();
+
+    this->_gameWin = subWindows[1];
+
+    if (eb::gbk2utf8(this->_win.title) == "梦幻西游 ONLINE") {
+      return;
+    }
+
+  } catch (std::runtime_error &err) {
+    std::cout << "has error: " << err.what() << std::endl;
+  }
+}
+
+eb::Window *MH::gameWin() {
+  return &this->_gameWin;
 }

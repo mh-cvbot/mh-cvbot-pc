@@ -28,6 +28,7 @@ bool posIndicatorState(const ::cv::Mat &mat, mh::PosIndicatorState *out) {
 
 bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
   auto tmp = posIndicatorState(mat, &out->state);
+  std::cout << "tmp: " << tmp << ", state: " << out->state << std::endl;
   if (!tmp) {
     return false;
   }
@@ -37,10 +38,11 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
     ::cv::Mat _mat;
     mh::cv::white(roi, _mat);
     _mat = ~_mat;
-    ::cv::imshow("test", _mat);
-    ::cv::waitKey(0);
+//    ::cv::imshow("test", _mat);
+//    ::cv::waitKey(0);
 
-    tesseract::TessBaseAPI *tess = new tesseract::TessBaseAPI();
+    auto *tess = new tesseract::TessBaseAPI();
+    // 为什么mac上可以出来？？
     if (tess->Init(nullptr, "chi_sim+eng")) {
       std::cerr << "tess init failed." << std::endl;
       return false;

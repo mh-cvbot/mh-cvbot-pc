@@ -5,6 +5,7 @@
 #include <easybot/easybot.h>
 #include <mhtool/mh/mh.h>
 #include <mhtool/mh/mh_main_loop.h>
+#include <mhtool/cv.h>
 #include <thread>
 
 static long minDuration = 1000;
@@ -28,13 +29,8 @@ void MHMainLoop::run() {
 
     try {
       // 开始的逻辑怎么写合适？
-//        auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
       auto pMhTab = eb::Process::findByName(MH::MH_TAB_EXE);
       auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
-//      std::cout << "pMhTab pid: " << pMhTab.getPid() << std::endl;
-//      std::cout << "mhmain pid: " << pMhMain.getPid() << std::endl;
-//      pMhTab.printAllWindow();
-//      pMhMain.printAllWindow();
 
 
       if (pMhMain.getPid() == 0) {
@@ -48,16 +44,22 @@ void MHMainLoop::run() {
 
       auto gameWindow = subWindows[1];
 
-      cv::Mat mat;
-      gameWindow.screenshot(mat, 2);
-      cv::imshow("main loop", mat);
-      cv::waitKey(0);
+//      cv::Mat mat;
+//      gameWindow.screenshot(mat, 2);
+//      cv::imshow("main loop", mat);
+//      cv::waitKey(0);
 
       if (eb::gbk2utf8(window.title) == "梦幻西游 ONLINE") {
         this->_label->setText("没有登录");
         continue;
       }
 
+      // what to do next?
+      mh::PosIndicator pos;
+      cv::Mat mat;
+      gameWindow.screenshot(mat, 2);
+      mh::cv::posIndicator(mat, &pos);
+      std::cout << "pos: " << pos << std::endl;
 
       this->_label->setText("请继续完成逻辑");
     } catch (std::runtime_error &err) {
@@ -70,6 +72,7 @@ void MHMainLoop::run() {
     auto now = eb::currentTimeInMillisecond();
     auto diff = now - begin;
     if (diff > 0) {
+      // look's wait not work?
       std::this_thread::sleep_for(std::chrono::milliseconds(diff));
     }
   }

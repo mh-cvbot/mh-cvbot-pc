@@ -21,7 +21,8 @@ class MH {
 
  public:
   MH();
-  void init(eb::Process pTab, eb::Process pMain);
+  void init();
+  eb::Window *gameWin();
   static std::string MH_MAIN_EXE;
   static std::string MH_TAB_EXE;
   const static int CONTENT_WIDTH = 800;

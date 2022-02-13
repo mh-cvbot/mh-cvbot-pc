@@ -17,14 +17,20 @@ static void startApp1(MH &mh);
 TEST(TestMM, screenshot) {
   // ok, do the work.
 //  eb::Process::printAllProcess("mhmain.exe");
-  auto p = eb::Process::findByName("mhmain.exe");
-  auto w = p.getBiggestWindow();
+//  auto p = eb::Process::findByName("mhmain.exe");
+//  auto w = p.getBiggestWindow();
+//  cv::Mat mat;
+//  w.screenshot(mat);
+//
+//  ::cv::Mat roi(mat, ::cv::Range(28, 628), ::cv::Range(0, 800));
+  MH mh;
+  mh.init();
   cv::Mat mat;
-  w.screenshot(mat);
+  mh.gameWin()->screenshot(mat, 1);
+  cv::imshow("im", mat);
+  cv::waitKey(0);
 
-  ::cv::Mat roi(mat, ::cv::Range(28, 628), ::cv::Range(0, 800));
-
-  cv::imwrite("tmp.bmp", roi);
+  cv::imwrite("tmp.bmp", mat);
 //  std::cout << "p: " << p.getPid() << std::endl;
 }
 
