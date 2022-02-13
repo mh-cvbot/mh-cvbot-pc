@@ -24,9 +24,10 @@ TEST(TestMM, screenshot) {
 //
 //  ::cv::Mat roi(mat, ::cv::Range(28, 628), ::cv::Range(0, 800));
   MH mh;
-  mh.init();
+  mh.refresh();
   cv::Mat mat;
   mh.gameWin()->screenshot(mat, 1);
+  std::cout << "channel: " << mat.channels() << "imgSize: " << mat.size().width << ", height: " << mat.size().height << std::endl;
   cv::imshow("im", mat);
   cv::waitKey(0);
 

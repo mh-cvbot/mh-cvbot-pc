@@ -223,11 +223,11 @@ int MH::startedCount() {
     return 0;
 }
 
-MH::MH(): _pTab(0), _pMain(0), _gameWin(0), _win(0) {
+MH::MH(): _pTab(0), _pMain(0), _gameWin(nullptr), _win(nullptr) {
 
 }
 
-void MH::init() {
+void MH::refresh() {
   try {
     // 开始的逻辑怎么写合适？
     auto pMhTab = eb::Process::findByName(MH::MH_TAB_EXE);
@@ -255,4 +255,8 @@ void MH::init() {
 
 eb::Window *MH::gameWin() {
   return &this->_gameWin;
+}
+
+eb::Process *MH::pMain() {
+  return &this->_pMain;
 }

@@ -21,6 +21,7 @@ void MHMainLoop::stop() {
 }
 
 void MHMainLoop::run() {
+  MH mh;
   while (true) {
     if (!this->_start) {
       break;
@@ -28,40 +29,37 @@ void MHMainLoop::run() {
     auto begin = eb::currentTimeInMillisecond();
 
     try {
-      // 开始的逻辑怎么写合适？
-      auto pMhTab = eb::Process::findByName(MH::MH_TAB_EXE);
-      auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
-
-
-      if (pMhMain.getPid() == 0) {
-        this->_label->setText("请开启游戏");
+      mh.refresh();
+      if (mh.gameWin()->getId() == nullptr) {
+        this->_label->setText("请开启并登录游戏");
         continue;
       }
 
-      auto window = pMhTab.getBiggestWindow();
-
-      auto subWindows = window.getSubWindows();
-
-      auto gameWindow = subWindows[1];
-
-//      cv::Mat mat;
-//      gameWindow.screenshot(mat, 2);
-//      cv::imshow("main loop", mat);
+      cv::Mat mat;
+      // 为什么这里又不对了？
+      // 难道是qt的问题，还是opencv的问题呢？
+      mh.gameWin()->screenshot(mat, 2);
+//      std::cout << "channel: " << mat.channels() << "imgSize: " << mat.size().width << ", height: " << mat.size().height << std::endl;
+//      cv::imwrite("tmp11.bmp", mat);
+//      cv::imshow("test", mat);
 //      cv::waitKey(0);
 
-      if (eb::gbk2utf8(window.title) == "梦幻西游 ONLINE") {
+      if (eb::gbk2utf8(mh.gameWin()->title) == "梦幻西游 ONLINE") {
         this->_label->setText("没有登录");
         continue;
       }
 
-      // what to do next?
       mh::PosIndicator pos;
-      cv::Mat mat;
-      gameWindow.screenshot(mat, 2);
-      mh::cv::posIndicator(mat, &pos);
+      auto success = mh::cv::posIndicator(mat, &pos);
       std::cout << "pos: " << pos << std::endl;
 
-      this->_label->setText("请继续完成逻辑");
+      if (!success) {
+        this->_label->setText("获取不到坐标");
+      } else {
+        this->_label->setText(QString("%1 [%2,%3]").arg(QString(pos.name.c_str())).arg(pos.pos.x).arg(pos.pos.y));
+      }
+
+
     } catch (std::runtime_error &err) {
       std::cout << "has error: " << err.what() << std::endl;
       this->_start = false;
