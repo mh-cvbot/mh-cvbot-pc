@@ -1,5 +1,8 @@
 * TODOS
-Ok, let's write the real logic.
+- 弄简单一点吧。暂时
+
+- 测量tesseract需要多少时间
+- something else.
 
 ** how about show the live preview?
 yes, but latter.
