@@ -7,8 +7,20 @@
 
 #include <QWidget>
 
-class LogView: public QWidget {
+#include <vector>
+#include <string>
 
+class TaskLogView: public QWidget {
+ public:
+  TaskLogView(QWidget *parent = nullptr);
+
+ private:
+  std::vector<std::string> logs;
+  QStringList _logs;
+ public:
+  void clear();
+  void add(const std::string& log);
+  void addError(const std::string &log);
 };
 
 

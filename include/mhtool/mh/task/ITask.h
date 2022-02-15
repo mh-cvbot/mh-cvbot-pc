@@ -7,6 +7,7 @@
 #include <mhtool/comm/Result.h>
 
 class ITask {
+ public:
   /**
    * throw exception when failed?
    */

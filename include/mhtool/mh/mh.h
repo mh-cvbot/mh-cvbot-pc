@@ -7,6 +7,7 @@
 
 #include <string>
 #include "./mh_path.h"
+#include "mhtool/comm/Result.h"
 #include <easybot/easybot.h>
 
 /**
@@ -21,9 +22,17 @@ class MH {
 
  public:
   MH();
+  static MH* _inst;
+  static MH* inst();
   void refresh();
   eb::Window *gameWin();
   eb::Process *pMain();
+
+  /**
+   * 检查是否已经开启并登录了
+   * @return
+   */
+  Result checkHasStart();
 
   static std::string MH_MAIN_EXE;
   static std::string MH_TAB_EXE;

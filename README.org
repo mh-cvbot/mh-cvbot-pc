@@ -1,4 +1,5 @@
 * TODOS
+- logView add error log
 - 弄简单一点吧。暂时
 
 - 测量tesseract需要多少时间

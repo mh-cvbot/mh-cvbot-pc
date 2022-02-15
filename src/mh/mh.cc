@@ -1,5 +1,4 @@
-//
-// Created by huhua on 2021/9/28.
+// // Created by huhua on 2021/9/28.
 //
 
 #include <iostream>
@@ -14,8 +13,17 @@
 #define MAX_KEY_LENGTH 255
 #define MAX_VALUE_NAME 16383
 
+MH* MH::_inst = nullptr;
+
 std::string MH::MH_MAIN_EXE = "mhmain.exe";
 std::string MH::MH_TAB_EXE = "mhtab.exe";
+
+MH *MH::inst() {
+  if (_inst == nullptr) {
+    _inst = new MH();
+  }
+  return _inst;
+}
 
 bool MH::hasInstalled() {
     return false;
@@ -259,4 +267,9 @@ eb::Window *MH::gameWin() {
 
 eb::Process *MH::pMain() {
   return &this->_pMain;
+}
+
+Result MH::checkHasStart() {
+
+  return Result(0, "");
 }

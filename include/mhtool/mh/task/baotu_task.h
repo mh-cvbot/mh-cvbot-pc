@@ -7,18 +7,13 @@
 
 #include <mhtool/mh/task/ITask.h>
 #include <stdexcept>
+#include <iostream>
 
 #include <mhtool/mh/data.h>
 
 class BaotuTask: public ITask {
-  
-  Result run() override {
-    try {
-      mh::city::changan->jiudian->come().checkWithThrow();
-    } catch (std::runtime_error &err) {
-    }
-  }
-  
+ public:
+  Result run() override;
 };
 
 #endif //MH_TOOL_INCLUDE_MHTOOL_MH_TASK_BAOTU_TASK_H_

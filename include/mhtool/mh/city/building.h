@@ -8,6 +8,7 @@
 
 namespace mh {
   class City;
+
   class Building {
    public:
     City *city;
