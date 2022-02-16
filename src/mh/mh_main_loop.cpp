@@ -5,6 +5,7 @@
 #include <easybot/easybot.h>
 #include <mhtool/mh/mh.h>
 #include <mhtool/mh/mh_main_loop.h>
+#include <mhtool/cv.h>
 #include <thread>
 
 static long minDuration = 1000;
@@ -27,39 +28,33 @@ void MHMainLoop::run() {
     auto begin = eb::currentTimeInMillisecond();
 
     try {
-      // 开始的逻辑怎么写合适？
-//        auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
-      auto pMhTab = eb::Process::findByName(MH::MH_TAB_EXE);
-      auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
-//      std::cout << "pMhTab pid: " << pMhTab.getPid() << std::endl;
-//      std::cout << "mhmain pid: " << pMhMain.getPid() << std::endl;
-//      pMhTab.printAllWindow();
-//      pMhMain.printAllWindow();
-
-
-      if (pMhMain.getPid() == 0) {
-        this->_label->setText("请开启游戏");
+      auto rst = MH::inst()->checkHasLogin();
+      if (!rst.isOk()) {
+        this->_label->setText(QString(rst.msg.c_str()));
         continue;
       }
-
-      auto window = pMhTab.getBiggestWindow();
-
-      auto subWindows = window.getSubWindows();
-
-      auto gameWindow = subWindows[1];
 
       cv::Mat mat;
-      gameWindow.screenshot(mat, 2);
-      cv::imshow("main loop", mat);
-      cv::waitKey(0);
+      // 为什么这里又不对了？
+      // 难道是qt的问题，还是opencv的问题呢？
+      MH::inst()->gameWin()->screenshot(mat, 2);
+//      std::cout << "channel: " << mat.channels() << "imgSize: " << mat.size().width << ", height: " << mat.size().height << std::endl;
+//      cv::imwrite("tmp11.bmp", mat);
+//      cv::imshow("test", mat);
+//      cv::waitKey(0);
 
-      if (eb::gbk2utf8(window.title) == "梦幻西游 ONLINE") {
-        this->_label->setText("没有登录");
-        continue;
+
+      mh::PosIndicator pos;
+      auto success = mh::cv::posIndicator(mat, &pos);
+      std::cout << "pos: " << pos << std::endl;
+
+      if (!success) {
+        this->_label->setText("获取不到坐标");
+      } else {
+        this->_label->setText(QString("%1 [%2,%3]").arg(QString(pos.name.c_str())).arg(pos.pos.x).arg(pos.pos.y));
       }
 
 
-      this->_label->setText("请继续完成逻辑");
     } catch (std::runtime_error &err) {
       std::cout << "has error: " << err.what() << std::endl;
       this->_start = false;
@@ -70,6 +65,7 @@ void MHMainLoop::run() {
     auto now = eb::currentTimeInMillisecond();
     auto diff = now - begin;
     if (diff > 0) {
+      // look's wait not work?
       std::this_thread::sleep_for(std::chrono::milliseconds(diff));
     }
   }

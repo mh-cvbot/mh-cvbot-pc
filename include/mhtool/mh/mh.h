@@ -7,10 +7,13 @@
 
 #include <string>
 #include "./mh_path.h"
+#include "mhtool/comm/Result.h"
 #include <easybot/easybot.h>
+#include <mhtool/>
 
+namespace mh {
 /**
- * ok, for now, only consider for just on account
+ * withOk, for now, only consider for just on account
  */
 class MH {
  private:
@@ -21,7 +24,17 @@ class MH {
 
  public:
   MH();
-  void init(eb::Process pTab, eb::Process pMain);
+  static MH* _inst;
+  static MH* inst();
+  void refresh();
+  eb::Window *gameWin();
+  eb::Process *pMain();
+
+  /**
+   * 检查是否已经开启并登录了
+   */
+  Result checkHasLogin();
+
   static std::string MH_MAIN_EXE;
   static std::string MH_TAB_EXE;
   const static int CONTENT_WIDTH = 800;
@@ -36,5 +49,8 @@ class MH {
   std::string getInstallPath();
 
   MhPath getPath();
+
+
 };
+}
 #endif //MH_TOOL_MH_H

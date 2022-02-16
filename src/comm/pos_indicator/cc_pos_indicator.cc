@@ -26,23 +26,29 @@ bool posIndicatorState(const ::cv::Mat &mat, mh::PosIndicatorState *out) {
   return false;
 }
 
+// how to deal with you??
 bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
   auto tmp = posIndicatorState(mat, &out->state);
+  std::cout << "tmp: " << tmp << ", state: " << out->state << std::endl;
   if (!tmp) {
     return false;
   }
 
   if (out->state == PosIndicatorState::MIDDLE) {
     ::cv::Mat roi(mat, ::cv::Range(23, 43), ::cv::Range(18, 130));
+    ::cv::Mat _mat1;
+    mh::cv::white(roi, _mat1);
+    _mat1 = ~_mat1;
+    // try double you
     ::cv::Mat _mat;
-    mh::cv::white(roi, _mat);
-    _mat = ~_mat;
-    ::cv::imshow("test", _mat);
-    ::cv::waitKey(0);
+    ::cv::resize(_mat1, _mat, ::cv::Size(_mat1.size().width * 2, _mat1.size().height * 2), 0, 0, ::cv::INTER_NEAREST);
+//    ::cv::imshow("test", _mat);
+//    ::cv::waitKey(0);
 
-    tesseract::TessBaseAPI *tess = new tesseract::TessBaseAPI();
+    auto *tess = new tesseract::TessBaseAPI();
+    // 为什么mac上可以出来？？
     if (tess->Init(nullptr, "chi_sim+eng")) {
-      std::cerr << "tess init failed." << std::endl;
+      std::cerr << "tess refresh failed." << std::endl;
       return false;
     }
 

@@ -1,5 +1,4 @@
-//
-// Created by huhua on 2021/9/28.
+// // Created by huhua on 2021/9/28.
 //
 
 #include <iostream>
@@ -9,14 +8,22 @@
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 #include <tchar.h>
-#include <qt_windows.h>
 #endif
 
 #define MAX_KEY_LENGTH 255
 #define MAX_VALUE_NAME 16383
 
+MH* MH::_inst = nullptr;
+
 std::string MH::MH_MAIN_EXE = "mhmain.exe";
 std::string MH::MH_TAB_EXE = "mhtab.exe";
+
+MH *MH::inst() {
+  if (_inst == nullptr) {
+    _inst = new MH();
+  }
+  return _inst;
+}
 
 bool MH::hasInstalled() {
     return false;
@@ -224,13 +231,52 @@ int MH::startedCount() {
     return 0;
 }
 
-void MH::init(eb::Process pTab, eb::Process pMain) {
-  this->_pTab = pTab;
-  this->_pMain = pMain;
+MH::MH(): _pTab(0), _pMain(0), _gameWin(nullptr), _win(nullptr) {
 
-  this->_pTab.getWindows();
 }
 
-MH::MH(): _pTab(0), _pMain(0), _gameWin(0), _win(0) {
+void MH::refresh() {
+  try {
+    // 开始的逻辑怎么写合适？
+    auto pMhTab = eb::Process::findByName(MH::MH_TAB_EXE);
+    auto pMhMain = eb::Process::findByName(MH::MH_MAIN_EXE);
 
+
+    if (pMhMain.getPid() == 0) {
+      return;
+    }
+
+    this->_win = pMhTab.getBiggestWindow();
+
+    auto subWindows = this->_win.getSubWindows();
+
+    this->_gameWin = subWindows[1];
+
+    if (eb::gbk2utf8(this->_win.title) == "梦幻西游 ONLINE") {
+      return;
+    }
+
+  } catch (std::runtime_error &err) {
+    std::cout << "has error: " << err.what() << std::endl;
+  }
+}
+
+eb::Window *MH::gameWin() {
+  return &this->_gameWin;
+}
+
+eb::Process *MH::pMain() {
+  return &this->_pMain;
+}
+
+Result MH::checkHasLogin() {
+  this->refresh();
+  if (this->gameWin()->getId() == nullptr) {
+    return {1, "请开启并登录游戏"};
+  }
+
+  if (eb::gbk2utf8(MH::inst()->gameWin()->title) == "梦幻西游 ONLINE") {
+    return {1, "没有登录"};
+  }
+  return {0, ""};
 }

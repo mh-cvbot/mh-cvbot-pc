@@ -11,13 +11,10 @@
 #include <QToolBar>
 #include <QPushButton>
 #include <QStatusBar>
-#include "./component/log/log_view.h"
-#include <mhtool/mh/mh.h>
-#include <mhtool/comm/module/runtime/runtime.h>
-#include <boost/filesystem.hpp>
-#include <easybot/easybot.h>
 #include <chrono>
-#include <mhtool/mh/mh_window.h>
+#include <QVBoxLayout>
+#include <mhtool/mh/task/baotu_task.h>
+#include <mhtool/comm/log.h>
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -36,8 +33,17 @@ App::App() {
   auto label = new QLabel();
   this->statusBar()->addPermanentWidget(label);
 
+  auto *centralWidget = new QWidget;
+  // setup main window.
+  auto *mainLayout = new QVBoxLayout();
+  mainLayout->addWidget(new QWidget());
+  this->logView = new TaskLogView;
+  mainLayout->addWidget(this->logView);
+  centralWidget->setLayout(mainLayout);
+  setCentralWidget(centralWidget);
+
   this->mhMainLoop = new MHMainLoop(label);
-  this->mhMainLoop->start();
+//  this->mhMainLoop->start();
 }
 
 void App::createMenus() {
@@ -66,8 +72,13 @@ void App::start() {
   this->refreshStartUi();
 
   try {
+    // how to do this.
+    auto *task = new BaotuTask();
+    task->run().checkWithThrow();
   } catch (std::runtime_error &err) {
     std::cout << "has error: " << err.what() << std::endl;
+    this->logView->addError(err.what());
+
     this->hasStarted = false;
     this->refreshStartUi();
   }
@@ -79,10 +90,10 @@ void App::stop() {
 }
 
 void App::createDocker() {
-  auto *dockLog = new QDockWidget(tr("Log"), this);
-  dockLog->setAllowedAreas(Qt::RightDockWidgetArea | Qt::BottomDockWidgetArea);
-  dockLog->setWidget(new LogView());
-  addDockWidget(Qt::BottomDockWidgetArea, dockLog);
+//  auto *dockLog = new QDockWidget(tr("Log"), this);
+//  dockLog->setAllowedAreas(Qt::RightDockWidgetArea | Qt::BottomDockWidgetArea);
+//  dockLog->setWidget(new LogView());
+//  addDockWidget(Qt::BottomDockWidgetArea, dockLog);
 }
 
 void App::refreshStartUi() {

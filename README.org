@@ -1,12 +1,32 @@
 * TODOS
-Ok, let's write the real logic.
+- logView add error log
+- 弄简单一点吧。暂时
+
+- 测量tesseract需要多少时间
+- something else.
 
 ** how about show the live preview?
 yes, but latter.
 
 * struct
-mh::cv:: cv relative
-mh::model
+
+#+BEGIN_SRC
+├─account
+├─comm
+│  └─module
+│      ├─modal
+│      ├─pos_indicator
+│      └─runtime
+├─cv                      # cv staff, cv and full image
+├─mh
+│  ├─city
+│  │  └─changan
+│  ├─game_scene
+│  ├─npc
+│  └─task
+├─robot
+└─util
+#+END_SRC
 
 * Links
 - https://docs.microsoft.com/en-us/windows/win32/toolhelp/taking-a-snapshot-and-viewing-processes

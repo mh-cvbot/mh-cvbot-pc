@@ -9,27 +9,31 @@
 #include <easybot/easybot.h>
 #include "mhtool/mh/mh_window.h"
 #include <mhtool/mh/mh_main_loop.h>
+#include "./component/log/log_view.h"
 
-class App: public QMainWindow {
-private:
-    bool hasStarted;
-    QPushButton *btStart;
-    QPushButton *btStop;
-    void createMenus();
-    void createToolBars();
-    void createDocker();
-    void refreshStartUi();
-    MhWindow *mhWindow;
-    MHMainLoop *mhMainLoop;
+class App : public QMainWindow {
+ private:
+  /**
+   * For now, only for baotu task
+   */
+  bool hasStarted;
+  QPushButton *btStart;
+  QPushButton *btStop;
+  void createMenus();
+  void createToolBars();
+  void createDocker();
+  void refreshStartUi();
+  MhWindow *mhWindow;
+  MHMainLoop *mhMainLoop;
+  TaskLogView *logView;
 
+ private slots:
+  void start();
+  void stop();
+  void screenshot();
 
-private slots:
-    void start();
-    void stop();
-    void screenshot();
-
-public:
-    App();
+ public:
+  App();
 };
 
 #endif //MH_TOOL_APP_H
