@@ -11,13 +11,14 @@ yes, but latter.
 * struct
 
 #+BEGIN_SRC
+├─task                      #all the tasks.
 ├─account
 ├─comm
 │  └─module
 │      ├─modal
 │      ├─pos_indicator
 │      └─runtime
-├─cv                      # cv staff, cv and full image
+├─cv                        # cv staff, cv and full image
 ├─mh
 │  ├─city
 │  │  └─changan
@@ -27,6 +28,9 @@ yes, but latter.
 ├─robot
 └─util
 #+END_SRC
+
+* decision making
+- should cv wrap the image?
 
 * Links
 - https://docs.microsoft.com/en-us/windows/win32/toolhelp/taking-a-snapshot-and-viewing-processes

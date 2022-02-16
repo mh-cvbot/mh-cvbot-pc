@@ -5,7 +5,7 @@
 #ifndef MH_TOOL_SRC_MH_TASK_GO_CITY_TASK_H_
 #define MH_TOOL_SRC_MH_TASK_GO_CITY_TASK_H_
 
-#include <mhtool/mh/task/ITask.h>
+#include "mhtool/task/task.h"
 #include "mhtool/mh/city/city.h"
 
 class GoCityTask: public ITask {

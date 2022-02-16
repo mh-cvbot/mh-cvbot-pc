@@ -4,9 +4,9 @@
 
 #ifndef MH_TOOL_INCLUDE_MHTOOL_COMM_TASK_ITASK_H_
 #define MH_TOOL_INCLUDE_MHTOOL_COMM_TASK_ITASK_H_
-#include <mhtool/comm/Result.h>
+#include "mhtool/comm/Result.h"
 
-class ITask {
+class Task {
  public:
   /**
    * throw exception when failed?

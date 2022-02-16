@@ -5,13 +5,13 @@
 #ifndef MH_TOOL_INCLUDE_MHTOOL_MH_TASK_BAOTU_TASK_H_
 #define MH_TOOL_INCLUDE_MHTOOL_MH_TASK_BAOTU_TASK_H_
 
-#include <mhtool/mh/task/ITask.h>
+#include "task.h"
 #include <stdexcept>
 #include <iostream>
 
-#include <mhtool/mh/data.h>
+#include "mhtool/mh/data.h"
 
-class BaotuTask: public ITask {
+class BaotuTask: public Task {
  public:
   Result run() override;
 };

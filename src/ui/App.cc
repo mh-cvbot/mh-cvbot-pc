@@ -13,7 +13,7 @@
 #include <QStatusBar>
 #include <chrono>
 #include <QVBoxLayout>
-#include <mhtool/mh/task/baotu_task.h>
+#include "mhtool/task/baotu_task.h"
 #include <mhtool/comm/log.h>
 
 #define WIDTH 800
