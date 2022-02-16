@@ -21,7 +21,6 @@ void MHMainLoop::stop() {
 }
 
 void MHMainLoop::run() {
-  MH mh;
   while (true) {
     if (!this->_start) {
       break;
@@ -29,25 +28,21 @@ void MHMainLoop::run() {
     auto begin = eb::currentTimeInMillisecond();
 
     try {
-      mh.refresh();
-      if (mh.gameWin()->getId() == nullptr) {
-        this->_label->setText("请开启并登录游戏");
+      auto rst = MH::inst()->checkHasLogin();
+      if (!rst.isOk()) {
+        this->_label->setText(QString(rst.msg.c_str()));
         continue;
       }
 
       cv::Mat mat;
       // 为什么这里又不对了？
       // 难道是qt的问题，还是opencv的问题呢？
-      mh.gameWin()->screenshot(mat, 2);
+      MH::inst()->gameWin()->screenshot(mat, 2);
 //      std::cout << "channel: " << mat.channels() << "imgSize: " << mat.size().width << ", height: " << mat.size().height << std::endl;
 //      cv::imwrite("tmp11.bmp", mat);
 //      cv::imshow("test", mat);
 //      cv::waitKey(0);
 
-      if (eb::gbk2utf8(mh.gameWin()->title) == "梦幻西游 ONLINE") {
-        this->_label->setText("没有登录");
-        continue;
-      }
 
       mh::PosIndicator pos;
       auto success = mh::cv::posIndicator(mat, &pos);

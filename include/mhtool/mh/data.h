@@ -10,10 +10,6 @@
 namespace mh {
 namespace city {
   ChangAn *changan;
-  class Building {
-   public:
-    std::string name;
-  };
 }
 }
 #endif //MH_TOOL_INCLUDE_MHTOOL_MH_DATA_H_

@@ -14,6 +14,7 @@
 #include <chrono>
 #include <QVBoxLayout>
 #include <mhtool/mh/task/baotu_task.h>
+#include <mhtool/comm/log.h>
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -72,7 +73,6 @@ void App::start() {
 
   try {
     // how to do this.
-    // TODO: check mh has start.
     auto *task = new BaotuTask();
     task->run().checkWithThrow();
   } catch (std::runtime_error &err) {

@@ -8,8 +8,19 @@
 #include "mhtool/mh/BaotuTaskInfo.h"
 
 namespace mh {
+class City;
+class Building;
+
 class Npc {
  public:
+  City *city;
+  Building *building;
+
+ private:
+  Result realCome();
+
+ public:
+  explicit Npc(City *_city, Building *_building = nullptr);
   Result come();
   Result clickMe();
   void chat(int choice);

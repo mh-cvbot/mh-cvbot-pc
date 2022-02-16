@@ -10,8 +10,8 @@
 
 namespace mh {
 namespace cv {
-  bool posIndicatorState(const ::cv::Mat &mat, mh::PosIndicatorState *out);
-  bool posIndicator(const ::cv::Mat &mat, PosIndicator *out);
+bool posIndicatorState(const ::cv::Mat &mat, mh::PosIndicatorState *out);
+bool posIndicator(const ::cv::Mat &mat, PosIndicator *out);
 }
 }
 #endif //MH_TOOL_INCLUDE_MHTOOL_COMM_CV_CV_POS_INDICATOR_H_

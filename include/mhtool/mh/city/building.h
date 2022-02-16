@@ -12,6 +12,12 @@ namespace mh {
   class Building {
    public:
     City *city;
+
+   public:
+    explicit Building(City *_city);
+
+   private:
+    Result realCome();
    public:
     /**
      * come here.

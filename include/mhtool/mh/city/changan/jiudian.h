@@ -8,7 +8,6 @@
 #include "../npc.h"
 namespace mh {
 class Xiaoer: public Npc {
-
 };
 
 class Jiudian: public mh::Building {

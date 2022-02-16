@@ -269,7 +269,14 @@ eb::Process *MH::pMain() {
   return &this->_pMain;
 }
 
-Result MH::checkHasStart() {
+Result MH::checkHasLogin() {
+  this->refresh();
+  if (this->gameWin()->getId() == nullptr) {
+    return {1, "请开启并登录游戏"};
+  }
 
-  return Result(0, "");
+  if (eb::gbk2utf8(MH::inst()->gameWin()->title) == "梦幻西游 ONLINE") {
+    return {1, "没有登录"};
+  }
+  return {0, ""};
 }

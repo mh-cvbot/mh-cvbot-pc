@@ -9,9 +9,11 @@
 #include "./mh_path.h"
 #include "mhtool/comm/Result.h"
 #include <easybot/easybot.h>
+#include <mhtool/>
 
+namespace mh {
 /**
- * ok, for now, only consider for just on account
+ * withOk, for now, only consider for just on account
  */
 class MH {
  private:
@@ -30,9 +32,8 @@ class MH {
 
   /**
    * 检查是否已经开启并登录了
-   * @return
    */
-  Result checkHasStart();
+  Result checkHasLogin();
 
   static std::string MH_MAIN_EXE;
   static std::string MH_TAB_EXE;
@@ -48,5 +49,8 @@ class MH {
   std::string getInstallPath();
 
   MhPath getPath();
+
+
 };
+}
 #endif //MH_TOOL_MH_H

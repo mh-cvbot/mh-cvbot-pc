@@ -18,10 +18,14 @@ class Result {
 
   inline Result(int _code, std::string _msg): code(_code), msg(std::move(_msg)) {};
 
-  inline static Result ok(const std::string &msg) {
+  inline static Result withOk(const std::string &msg) {
     // I can return something like this?
     return {CODE_OK, msg};
   };
+
+  inline bool isOk() const {
+    return this->code == CODE_OK;
+  }
 
   bool checkWithThrow();
 

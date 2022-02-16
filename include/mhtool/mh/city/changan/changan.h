@@ -7,13 +7,19 @@
 
 #include "mhtool/mh/city/building.h"
 #include "./jiudian.h"
+#include "../city.h"
 
+namespace mh {
 /**
  * 长安
  */
-class ChangAn {
+class ChangAn: public City {
+ public:
+  ChangAn();
  public:
   mh::Jiudian *jiudian;
 };
+
+}
 
 #endif //MH_TOOL_INCLUDE_MHTOOL_MH_GAME_SCENE_CITY_CHANGAN_H_
