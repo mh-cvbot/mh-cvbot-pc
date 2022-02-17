@@ -6,7 +6,7 @@
 #define MH_TOOL_INCLUDE_MHTOOL_COMM_CV_CV_POS_INDICATOR_H_
 #include "mhtool/comm/module/pos_indicator/pos_indicator_state.h"
 #include <opencv2/core.hpp>
-#include <mhtool/comm/module/pos_indicator/pos_indicator.h>
+#include "mhtool/mh/pos_indicator.h"
 
 namespace mh {
 namespace cv {

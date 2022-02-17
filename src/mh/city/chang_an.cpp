@@ -1,14 +1,11 @@
 //
-// Created by huhua on 2022/2/11.
+// Created by huhua on 2022/2/17.
 //
 
-#include "mhtool/mh/city/city.h"
-#include <mhtool/mh.h>
+#include <mhtool/mh/city/changan/chang_an.h>
+#include "mhtool/mh/mh.h"
 
-mh::City::City(const std::string &name) : GameScene(name) {
-}
-
-Result mh::City::come() {
+Result mh::ChangAn::come(cv::Point2i dst) {
   // this is complicated situation
 
   // first check should use feixf or a daobq
@@ -31,10 +28,4 @@ Result mh::City::come() {
   // use the feixf or daobq
   // go the pos
 //  return City::come(pos);
-  return {1, "Please impl"};
 }
-
-Result mh::City::come(cv::Point2i pos) {
-  return come();
-}
-

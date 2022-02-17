@@ -6,10 +6,10 @@
 #define MH_TOOL_MH_H
 
 #include <string>
-#include "./mh_path.h"
+#include "mhtool/mh/mh_path.h"
 #include "mhtool/comm/Result.h"
-#include <easybot/easybot.h>
-#include <mhtool/>
+#include "easybot/easybot.h"
+#include "./pos_indicator.h"
 
 namespace mh {
 /**
@@ -50,7 +50,7 @@ class MH {
 
   MhPath getPath();
 
-
+  PosIndicator pos();
 };
 }
 #endif //MH_TOOL_MH_H

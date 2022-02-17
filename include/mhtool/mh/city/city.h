@@ -22,17 +22,26 @@ class City: public GameScene {
   /**
    * 是否可用飞行符到这里
    */
-  bool canFxf;
+  bool canFeixf;
 
   /**
    * 是否可用导标旗到这里
    */
-  bool canDbq;
+  bool canDaobq;
 
  public:
   City(const std::string &name);
-  Result come();
-  Result come(cv::Point2i pos);
+  virtual Result come();
+  virtual Result come(cv::Point2i pos);
+
+  /**
+   * 走到传送点
+   * @param sendPoint
+   * @return
+   */
+  Result goSendPoint(cv::Point2i sendPoint);
+
+  City* findPreviousCity();
 };
 }
 #endif //MH_TOOL_INCLUDE_MHTOOL_CITY_H_
