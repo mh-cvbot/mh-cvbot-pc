@@ -9,9 +9,19 @@ mh::City::City(const std::string &name) : GameScene(name) {
 }
 
 Result mh::City::come() {
+}
+
+Result mh::City::come(cv::Point2i pos) {
   // this is complicated situation
 
-  // first check should use feixf or a daobq
+  // 首先确定我们已经到附近了吧
+
+  // first check can we use a daobq
+  if (this->canDaobq) {
+    // but how to check a daobq??
+    // 遇事不觉，使用mh
+  }
+
   if (!this->canDaobq && this->canFeixf) {
     // find the best previous city.
     // for now only find one, can be not the best for now.
@@ -32,9 +42,5 @@ Result mh::City::come() {
   // go the pos
 //  return City::come(pos);
   return {1, "Please impl"};
-}
-
-Result mh::City::come(cv::Point2i pos) {
-  return come();
 }
 

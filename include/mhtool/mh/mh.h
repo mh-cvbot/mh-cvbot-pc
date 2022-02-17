@@ -50,7 +50,9 @@ class MH {
 
   MhPath getPath();
 
-  PosIndicator pos();
+  PosIndicator pos(bool waitStop = false);
+
+  void waitStop();
 };
 }
 #endif //MH_TOOL_MH_H
