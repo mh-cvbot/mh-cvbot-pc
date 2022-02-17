@@ -5,6 +5,8 @@
 #include <mhtool/task/task.h>
 #include <mhtool/comm/log.h>
 
+#include <utility>
+
 Result Task::run() {
   Log::i(this->name + " begin running");
   auto rst = this->realRun();
@@ -14,9 +16,10 @@ Result Task::run() {
   return rst;
 }
 
-Task::Task(const std::string &_name): name(_name) {
+Task::Task(std::string _name): name(std::move(_name)) {
 
 }
+
 Task::Task(): Task("Unknown name") {
 
 }

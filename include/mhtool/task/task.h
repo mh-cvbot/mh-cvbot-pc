@@ -11,7 +11,7 @@ class Task {
   std::string name;
 
  public:
-  Task(const std::string &_name);
+  Task(std::string _name);
   Task();
   /**
    * throw exception when failed?
