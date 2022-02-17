@@ -13,7 +13,7 @@
 
 class BaotuTask: public Task {
  public:
-  Result run() override;
+  Result realRun() override;
 };
 
 #endif //MH_TOOL_INCLUDE_MHTOOL_MH_TASK_BAOTU_TASK_H_

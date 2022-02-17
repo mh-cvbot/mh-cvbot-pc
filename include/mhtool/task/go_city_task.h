@@ -8,14 +8,11 @@
 #include "mhtool/task/task.h"
 #include "mhtool/mh/city/city.h"
 
-class GoCityTask: public ITask {
+class GoCityTask: public Task {
  private:
-  mh::City *_to;
+  mh::City *to;
  public:
-  inline GoCityTask(mh::City *to): _to(to);
-
-  bool run() override {
-  }
+  GoCityTask(mh::City *_to);
 };
 
 #endif //MH_TOOL_SRC_MH_TASK_GO_CITY_TASK_H_

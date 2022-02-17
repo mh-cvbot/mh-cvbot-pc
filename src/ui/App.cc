@@ -74,7 +74,7 @@ void App::start() {
   try {
     // how to do this.
     auto *task = new BaotuTask();
-    task->run().checkWithThrow();
+    task->realRun().checkWithThrow();
   } catch (std::runtime_error &err) {
     std::cout << "has error: " << err.what() << std::endl;
     this->logView->addError(err.what());

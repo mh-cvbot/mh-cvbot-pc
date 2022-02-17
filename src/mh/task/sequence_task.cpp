@@ -4,9 +4,13 @@
 
 #include <mhtool/task/sequence_task.h>
 
-Result SequenceTask::run() {
+Result SequenceTask::realRun() {
   for (auto &task: tasks) {
-    task.run();
+    auto rst = task.realRun();
+    if (!rst.isOk()) {
+      return rst;
+    }
   }
-  return {}
+
+  return {0, ""};
 }

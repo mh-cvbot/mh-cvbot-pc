@@ -5,7 +5,7 @@
 #include "mhtool/mh/mh.h"
 #include "mhtool/comm/log.h"
 
-Result BaotuTask::run() {
+Result BaotuTask::realRun() {
   try {
     MH::inst()->checkHasLogin().checkWithThrow();
     auto xiaoer = mh::city::changan->jiudian->xiaoer;

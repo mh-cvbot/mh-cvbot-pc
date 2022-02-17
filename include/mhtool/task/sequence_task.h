@@ -12,6 +12,6 @@ class SequenceTask: public Task {
   std::vector<Task> tasks;
 
  public:
-  Result run() override;
+  Result realRun() override;
 };
 #endif //MH_TOOL_INCLUDE_MHTOOL_TASK_SEQUENCE_TASK_H_
