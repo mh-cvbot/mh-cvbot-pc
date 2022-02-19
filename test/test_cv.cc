@@ -10,7 +10,7 @@ TEST(testCV, posIndicatorState) {
   auto img = cv::imread("./test_data/0.bmp");
   ASSERT_TRUE(!img.empty());
   mh::PosIndicatorState state;
-  auto rst = mh::cv::posIndicatorState(img, &state);
+  auto rst = mh::Cv::posIndicatorState(img, &state);
   ASSERT_TRUE(rst);
   ASSERT_EQ(state, mh::PosIndicatorState::MIDDLE);
 }
@@ -21,7 +21,7 @@ static void testPosIndicator(const std::string &name, mh::PosIndicator pi) {
 //  cv::waitKey(0);
   ASSERT_TRUE(!img.empty());
   mh::PosIndicator _pi;
-  auto rst = mh::cv::posIndicator(img, &_pi);
+  auto rst = mh::Cv::posIndicator(img, &_pi);
   std::cout << "_pi: " << _pi << std::endl;
   ASSERT_TRUE(rst);
   ASSERT_EQ(_pi, pi);

@@ -11,7 +11,7 @@
 #include <boost/algorithm/string.hpp>
 // how about namespace without indent?
 namespace mh {
-namespace cv {
+namespace Cv {
 
 // I don't have any better idea.
 PosIndicatorLandMark _middle({9, 50});
@@ -37,7 +37,7 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
   if (out->state == PosIndicatorState::MIDDLE) {
     ::cv::Mat roi(mat, ::cv::Range(23, 43), ::cv::Range(18, 130));
     ::cv::Mat _mat1;
-    mh::cv::white(roi, _mat1);
+    mh::Cv::white(roi, _mat1);
     _mat1 = ~_mat1;
     // try double you
     ::cv::Mat _mat;

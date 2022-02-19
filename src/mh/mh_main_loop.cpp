@@ -45,7 +45,7 @@ void MHMainLoop::run() {
 
 
       mh::PosIndicator pos;
-      auto success = mh::cv::posIndicator(mat, &pos);
+      auto success = mh::Cv::posIndicator(mat, &pos);
       std::cout << "pos: " << pos << std::endl;
 
       if (!success) {

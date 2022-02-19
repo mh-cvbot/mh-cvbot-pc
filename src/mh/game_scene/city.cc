@@ -5,15 +5,19 @@
 #include "mhtool/mh/city/city.h"
 #include <mhtool/mh.h>
 
-mh::City::City(const std::string &name) : GameScene(name) {
+using namespace mh;
+
+City::City(const std::string &name) : GameScene(name) {
 }
 
-Result mh::City::come() {
+Result City::come() {
 }
 
-Result mh::City::come(cv::Point2i pos) {
+Result City::come(cv::Point2i p) {
   // this is complicated situation
 
+  auto pos = MH::inst()->pos();
+//  if (pos.name == this->name() && pos.pos )
   // 首先确定我们已经到附近了吧
 
   // first check can we use a daobq
@@ -27,10 +31,10 @@ Result mh::City::come(cv::Point2i pos) {
     // for now only find one, can be not the best for now.
   }
 
-  auto pos = MH::inst()->pos();
+//  auto pos = MH::inst()->pos();
 
-  if (pos.name != this->name()) {
-  }
+//  if (pos.name != this->name()) {
+//  }
 
   // then check already has a feixf
   // then check can I buy this feixf easy?
