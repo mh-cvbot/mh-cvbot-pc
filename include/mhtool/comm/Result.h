@@ -7,6 +7,8 @@
 #include <string>
 #include <utility>
 
+#define RESULT_CHECK_AND_RETURN(rst) if (!#rst.isOk()) return;
+
 /**
  * Why I need write result again and again?
  */

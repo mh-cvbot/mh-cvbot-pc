@@ -5,7 +5,7 @@
 #ifndef MH_TOOL_INCLUDE_MHTOOL_COMM_MODAL_POS_INDICATOR_H_
 #define MH_TOOL_INCLUDE_MHTOOL_COMM_MODAL_POS_INDICATOR_H_
 #include <opencv2/core.hpp>
-#include "./pos_indicator_state.h"
+#include "mhtool/comm/module/pos_indicator/pos_indicator_state.h"
 
 namespace mh {
 class PosIndicator {

@@ -6,4 +6,5 @@
 
 GoCityTask::GoCityTask(mh::City *_to): to(_to)
   , Task(std::string("到") + _to->name()) {
+  // How to do?
 }
