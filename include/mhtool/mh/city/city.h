@@ -6,7 +6,7 @@
 #define MH_TOOL_INCLUDE_MHTOOL_CITY_H_
 #include "mhtool/mh/game_scene/game_scene.h"
 #include "mhtool/comm/Result.h"
-#include <opencv2/core.hpp>
+#include <easybot/easybot.h>
 
 namespace mh {
 /**
@@ -32,7 +32,7 @@ class City: public GameScene {
  public:
   City(const std::string &name);
   virtual Result come();
-  virtual Result come(cv::Point2i pos);
+  virtual Result come(const eb::Pos &p);
 
   /**
    * 走到传送点

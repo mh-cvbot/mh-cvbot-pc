@@ -4,6 +4,7 @@
 
 #include "mhtool/mh/city/city.h"
 #include <mhtool/mh.h>
+#include <mhtool/config.h>
 
 using namespace mh;
 
@@ -13,12 +14,27 @@ City::City(const std::string &name) : GameScene(name) {
 Result City::come() {
 }
 
-Result City::come(cv::Point2i p) {
-  // this is complicated situation
+Result City::come(const eb::Pos &p) {
+  // first check is near.
 
   auto pos = MH::inst()->pos();
-//  if (pos.name == this->name() && pos.pos )
-  // 首先确定我们已经到附近了吧
+  // check is already done
+  if (pos.name == this->name() && pos.pos.isNear(p, Config::SAME)) {
+    return {0, "done"};
+  }
+
+  // check near, use mouth click to go to
+  if (pos.name == this->name() && pos.isNear(p)) {
+    return MH::inst()->goByMouseClick(pos, p);
+  }
+
+  // check is in same city
+  if (pos.name == this->name()) {
+    MH::inst()->goByLittleMap(p);
+  } else {
+    // fly to this city.
+    throw std::runtime_error("Pleas impl fly to this city");
+  }
 
   // first check can we use a daobq
   if (this->canDaobq) {

@@ -53,6 +53,10 @@ class MH {
   PosIndicator pos(bool waitStop = false);
 
   void waitStop();
+
+  Result goByMouseClick(const PosIndicator &pos, const eb::Pos &dst);
+
+  Result goByLittleMap(const eb::Pos &dst);
 };
 }
 #endif //MH_TOOL_MH_H

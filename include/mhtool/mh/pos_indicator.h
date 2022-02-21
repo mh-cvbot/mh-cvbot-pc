@@ -6,14 +6,19 @@
 #define MH_TOOL_INCLUDE_MHTOOL_COMM_MODAL_POS_INDICATOR_H_
 #include <opencv2/core.hpp>
 #include "mhtool/comm/module/pos_indicator/pos_indicator_state.h"
+#include <easybot/easybot.h>
+
+using namespace mh;
 
 namespace mh {
 class PosIndicator {
  public:
   std::string name;
-  cv::Point2i pos;
+  eb::Pos pos;
   PosIndicatorState state;
 
+  bool isNear(const PosIndicator &indicator);
+  bool isNear(const eb::Pos &other);
   bool operator==(const mh::PosIndicator &other);
   friend bool operator==(const mh::PosIndicator &thiz, const mh::PosIndicator &other);
   friend std::ostream& operator<<(std::ostream& os, const PosIndicator& thiz);

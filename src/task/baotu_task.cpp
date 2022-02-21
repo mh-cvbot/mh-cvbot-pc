@@ -17,14 +17,4 @@ Result BaotuTask::realRun() {
   } catch (std::runtime_error &err) {
     std::cerr << err.what() << std::endl;
   }
-  try {
-    auto xiaoer = mh::city::changan->jiudian->xiaoer;
-    xiaoer->come().checkWithThrow();
-    xiaoer->clickMe().checkWithThrow();
-    BaotuTaskInfo info;
-    xiaoer->takeBaotuTask(&info).checkWithThrow();
-    // assert have the task.
-  } catch (std::runtime_error &err) {
-    Log::i(err.what());
-  }
 }
