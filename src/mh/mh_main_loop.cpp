@@ -51,7 +51,7 @@ void MHMainLoop::run() {
       if (!success) {
         this->_label->setText("获取不到坐标");
       } else {
-        this->_label->setText(QString("%1 [%2,%3]").arg(QString(pos.name.c_str())).arg(pos.pos.x).arg(pos.pos.y));
+        this->_label->setText(QString("%1 [%2,%3]").arg(QString(pos.name.c_str())).arg(pos.pos.x()).arg(pos.pos.y()));
       }
 
 

@@ -6,14 +6,28 @@ set(CMAKE_AUTOUIC ON)
 
 list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
 
-# ok, see the 32 or 64
 
-message("CMAKE_SIZEOF_VOID_P: ${CMAKE_SIZEOF_VOID_P}")
 # why you not complain?
 # Still I can't find the tesseract name.
 find_package(Tesseract REQUIRED)
 
 add_library(mh-tool-lib ${SRC_LIB})
+
+if(MSVC)
+    get_target_property(_srcs mh-tool-lib  SOURCES)
+
+    if(NOT CMAKE_GENERATOR MATCHES "Visual Studio .*")
+        set_property(SOURCE pch.cc APPEND PROPERTY OBJECT_OUTPUTS "${CMAKE_CURRENT_BINARY_DIR}/pch.pch")
+        set_property(SOURCE ${_srcs} APPEND PROPERTY OBJECT_DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/pch.pch")
+    endif()
+
+    set_source_files_properties(pch.cc PROPERTIES COMPILE_FLAGS "/Ycpch.h")
+    target_sources(mh-tool-lib PRIVATE pch.cc)
+    target_compile_options(mh-tool-lib PRIVATE /Yupch.h /FIpch.h /Zm200)
+else()
+    target_compile_options(mh-tool-lib PRIVATE -include "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h")
+endif()
+
 # public and interface will not work
 target_include_directories(mh-tool-lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 

@@ -4,6 +4,8 @@
 
 #ifndef MH_TOOL_INCLUDE_MHTOOL_COMM_MODAL_POS_INDICATOR_STATE_H_
 #define MH_TOOL_INCLUDE_MHTOOL_COMM_MODAL_POS_INDICATOR_STATE_H_
+#include <iostream>
+
 namespace mh {
 enum PosIndicatorState {
   LITTLE,

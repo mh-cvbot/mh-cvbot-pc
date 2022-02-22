@@ -9,6 +9,8 @@
 #include <opencv2/opencv.hpp>
 #include <regex>
 #include <boost/algorithm/string.hpp>
+#include "mhtool/cv/cv_util.h"
+
 // how about namespace without indent?
 namespace mh {
 namespace Cv {
@@ -37,7 +39,7 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
   if (out->state == PosIndicatorState::MIDDLE) {
     ::cv::Mat roi(mat, ::cv::Range(23, 43), ::cv::Range(18, 130));
     ::cv::Mat _mat1;
-    mh::Cv::white(roi, _mat1);
+    Cv::white(roi, _mat1);
     _mat1 = ~_mat1;
     // try double you
     ::cv::Mat _mat;
@@ -72,7 +74,7 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
     auto rst = std::regex_match(text.c_str(), m, r);
     if (rst && m.size() == 5) {
       out->name = m.str(1);
-      out->pos = ::cv::Point2i(std::stoi(m.str(3)), std::stoi(m.str(4)));
+      out->pos = eb::Pos(std::stoi(m.str(3)), std::stoi(m.str(4)));
       return true;
     }
   }

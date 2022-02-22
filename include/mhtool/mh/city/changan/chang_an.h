@@ -18,7 +18,7 @@ class ChangAn: public City {
   ChangAn();
  public:
   mh::Jiudian *jiudian;
-  Result come(cv::Point2i pos) override;
+  Result come(cv::Point2i pos);
 };
 
 }

@@ -24,9 +24,9 @@ std::ostream &mh::operator<<(std::ostream &os, const mh::PosIndicator &thiz) {
 }
 
 bool PosIndicator::isNear(const eb::Pos &other) {
-  return this->pos.isNear(other, Config::NEAR);
+  return this->pos.isNear(other, Config::DISTANCE_NEAR);
 }
 
 bool PosIndicator::isNear(const PosIndicator &indicator) {
-  return indicator.pos.name() == this->pos.name() && isNear(indicator.pos);
+  return indicator.name == this->name && isNear(indicator.pos);
 }

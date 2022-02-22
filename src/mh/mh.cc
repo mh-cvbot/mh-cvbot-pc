@@ -282,5 +282,5 @@ Result MH::checkHasLogin() {
 }
 
 Result MH::goByLittleMap(const eb::Pos &dst) {
-  return Result(0, __1::basic_string());
+  return Result(0, "");
 }

@@ -30,7 +30,9 @@ Result City::come(const eb::Pos &p) {
 
   // check is in same city
   if (pos.name == this->name()) {
+    // let the city do it self, is better?
     MH::inst()->goByLittleMap(p);
+    // do the real go by little map logic
   } else {
     // fly to this city.
     throw std::runtime_error("Pleas impl fly to this city");

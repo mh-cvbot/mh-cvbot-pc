@@ -6,8 +6,8 @@
 #define MH_TOOL_INCLUDE_MHTOOL_CONFIG_H_
 namespace mh {
 namespace Config {
-int NEAR = 70;
-int SAME = 2;
+extern int DISTANCE_NEAR;
+extern int SAME;
 }
 }
 #endif //MH_TOOL_INCLUDE_MHTOOL_CONFIG_H_
