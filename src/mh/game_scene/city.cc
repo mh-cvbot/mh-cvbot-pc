@@ -12,6 +12,7 @@ City::City(const std::string &name) : GameScene(name) {
 }
 
 Result City::come() {
+  return {0, ""};
 }
 
 Result City::come(const eb::Pos &p) {

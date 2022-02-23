@@ -28,4 +28,5 @@ Result mh::ChangAn::come(cv::Point2i dst) {
   // use the feixf or daobq
   // go the pos
 //  return City::come(pos);
+  return {0, ""};
 }
