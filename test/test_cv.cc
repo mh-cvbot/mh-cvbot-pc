@@ -34,7 +34,7 @@ static void testItem(const std::string &name, CvInfo info) {
 
   mh::PosIndicator _pi;
   auto rst = mh::Cv::posIndicator(img, &_pi);
-  std::cout << "_pi: " << _pi << std::endl;
+//  std::cout << "_pi: " << _pi << std::endl;
   ASSERT_TRUE(rst);
   ASSERT_EQ(_pi.name, info.name);
   ASSERT_EQ(_pi.pos.x(), info.x);

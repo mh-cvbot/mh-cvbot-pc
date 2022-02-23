@@ -14,6 +14,8 @@
 
 static void startApp1(MH &mh);
 
+using namespace mh;
+
 TEST(TestMM, screenshot) {
   // ok, do the work.
 //  eb::Process::printAllProcess("mhmain.exe");

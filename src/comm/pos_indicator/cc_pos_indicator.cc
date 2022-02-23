@@ -31,7 +31,7 @@ bool posIndicatorState(const ::cv::Mat &mat, mh::PosIndicatorState *out) {
 // how to deal with you??
 bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
   auto tmp = posIndicatorState(mat, &out->state);
-  std::cout << "tmp: " << tmp << ", state: " << out->state << std::endl;
+//  std::cout << "tmp: " << tmp << ", state: " << out->state << std::endl;
   if (!tmp) {
     return false;
   }
@@ -66,7 +66,7 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
     tess->End();
     delete tess;
     delete []_rstText;
-    std::cout << "text: " << text << std::endl;
+//    std::cout << "text: " << text << std::endl;
 
     const std::regex r(R"~((.*)(\[(\d+),(\d+)\]))~");
 

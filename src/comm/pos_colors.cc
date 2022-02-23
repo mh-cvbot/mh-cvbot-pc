@@ -14,7 +14,7 @@ PosColors::PosColors(std::vector<PosColor> pPosColors) {
 
 bool PosColors::check(const cv::Mat &mat) {
   for (auto pc: this->posColors) {
-    std::cout << "pc: " << pc << std::endl;
+//    std::cout << "pc: " << pc << std::endl;
     if (!pc.check(mat)) {
       return false;
     }

@@ -1,4 +1,5 @@
 * TODOS
+- remove the window snapshot alpha channel
 - logView add error log
 - 弄简单一点吧。暂时
 
