@@ -1,7 +1,7 @@
 //
 // Created by huhua on 2022/1/24.
 //
-#include <mhtool/cv.h>
+#include "mhtool/module/cv/cv.h"
 #include <mhtool/comm/module/pos_colors.h>
 #include <mhtool/cv/cv_pos_indicator.h>
 #include "./pos_indicator_land_mark.h"

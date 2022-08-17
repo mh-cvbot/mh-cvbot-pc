@@ -1,9 +1,6 @@
 * TODOS
-- remove the window snapshot alpha channel
+- how to cv the little map regsion?
 - logView add error log
-- 弄简单一点吧。暂时
-
-- 测量tesseract需要多少时间
 - something else.
 
 ** how about show the live preview?
