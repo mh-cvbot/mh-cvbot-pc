@@ -1,15 +1,15 @@
 //
 // Created by huhua on 2022/1/24.
 //
-#include "mhtool/module/cv/cv.h"
-#include <mhtool/comm/module/pos_colors.h>
+#include <mhtool/cv/cv.h>
+#include "mhtool/core/pos_colors.h"
 #include <mhtool/cv/cv_pos_indicator.h>
+#include <mhtool/cv/cv_util.h>
 #include "./pos_indicator_land_mark.h"
 #include <tesseract/baseapi.h>
 #include <opencv2/opencv.hpp>
 #include <regex>
 #include <boost/algorithm/string.hpp>
-#include "mhtool/cv/cv_util.h"
 
 // how about namespace without indent?
 namespace mh {

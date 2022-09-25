@@ -3,7 +3,7 @@
 //
 #include <gtest/gtest.h>
 #include <opencv2/opencv.hpp>
-#include "mhtool/module/cv/cv.h"
+#include "module/cv/cv.h"
 #include <mhtool/comm/module/pos_indicator/pos_indicator_state.h>
 #include "./cv_info.h"
 

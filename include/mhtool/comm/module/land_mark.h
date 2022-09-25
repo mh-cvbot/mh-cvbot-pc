@@ -5,7 +5,7 @@
 #ifndef MH_TOOL_INCLUDE_MHTOOL_COMM_LAND_MARK_H_
 #define MH_TOOL_INCLUDE_MHTOOL_COMM_LAND_MARK_H_
 #include <opencv2/core.hpp>
-#include "./pos_colors.h"
+#include "mhtool/core/pos_colors.h"
 
 class LandMark {
  private:

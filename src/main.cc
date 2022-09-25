@@ -8,14 +8,14 @@
 #include <qt_windows.h>
 
 int main(int argc, char **argv) {
-    TCHAR NPath[MAX_PATH];
-    GetCurrentDirectory(MAX_PATH, NPath);
-    std::cout << "current dir: " << NPath << std::endl;
+//    TCHAR NPath[MAX_PATH];
+//    GetCurrentDirectory(MAX_PATH, NPath);
+//    std::cout << "current dir: " << NPath << std::endl;
 
     QApplication q(argc, argv);
 
-    App app;
-    app.show();
+//    App app;
+//    app.show();
 
     return QApplication::exec();
 }

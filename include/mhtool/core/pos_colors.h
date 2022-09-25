@@ -5,7 +5,7 @@
 #ifndef MH_TOOL_INCLUDE_MHTOOL_COMM_POS_COLORS_H_
 #define MH_TOOL_INCLUDE_MHTOOL_COMM_POS_COLORS_H_
 #include <vector>
-#include "./pos_color.h"
+#include "mhtool/core/pos_color.h"
 #include <opencv2/core.hpp>
 
 class PosColors {

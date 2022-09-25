@@ -9,4 +9,5 @@
 namespace mh {
 namespace cv {
 }
+}
 #endif //MH_TOOL_CV_H

@@ -9,14 +9,14 @@
 class PosColor {
  public:
   // ok, if you are vec3b, you should be bgr
-  PosColor(cv::Point2i pPos, const cv::Vec3b& pColor, int pDst = 0);
-  cv::Point2i pos;
-  cv::Vec3b color;
+  PosColor(::cv::Point2i pPos, const ::cv::Vec3b& pColor, int pDst = 0);
+  ::cv::Point2i pos;
+  ::cv::Vec3b color;
   // better name?
   int dst;
 
  public:
-  bool check(const cv::Mat &mat);
+  bool check(const ::cv::Mat &mat);
 
   friend std::ostream& operator<<(std::ostream& os, const PosColor& thiz);
 };

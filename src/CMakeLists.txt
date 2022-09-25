@@ -27,7 +27,7 @@ target_link_libraries(mh-tool-lib
         libtesseract)
 
 
-add_executable(mh-tool ${SRC_LIB} main.cc)
+add_executable(mh-tool ${SRC_LIB} main.cc preview/preview_ui.cc preview/preview_ui.h)
 target_link_libraries(mh-tool mh-tool-lib)
 
 SET_TARGET_PROPERTIES(mh-tool PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
