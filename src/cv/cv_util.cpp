@@ -5,7 +5,7 @@
 #include <easybot/easybot.h>
 #include <mhtool/cv/cv_util.h>
 
-void mh::Cv::white(const ::cv::_InputArray &in, const ::cv::_OutputArray &out) {
+void mh::cv1::white(const ::cv::_InputArray &in, const ::cv::_OutputArray &out) {
   auto range = eb::HSVRange({0, 0, 0}, {0, 255, 255});
   range.work(in, out);
 }

@@ -7,7 +7,7 @@
 #include <opencv2/core.hpp>
 
 namespace mh {
-namespace Cv {
+namespace cv1 {
 void white(::cv::InputArray in, ::cv::OutputArray out);
 }
 }

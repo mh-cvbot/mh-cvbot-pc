@@ -13,7 +13,7 @@
 
 // how about namespace without indent?
 namespace mh {
-namespace Cv {
+namespace cv1 {
 
 // I don't have any better idea.
 PosIndicatorLandMark _middle({9, 50});
@@ -39,7 +39,7 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
   if (out->state == PosIndicatorState::MIDDLE) {
     ::cv::Mat roi(mat, ::cv::Range(23, 43), ::cv::Range(18, 130));
     ::cv::Mat _mat1;
-    Cv::white(roi, _mat1);
+    cv1::white(roi, _mat1);
     _mat1 = ~_mat1;
     // try double you
     ::cv::Mat _mat;

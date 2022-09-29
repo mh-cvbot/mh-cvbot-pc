@@ -8,7 +8,7 @@
 #include <opencv2/core.hpp>
 
 namespace mh {
-    namespace Cv {
+    namespace cv1 {
         class Img {
         private:
             ::cv::Mat img;

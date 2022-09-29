@@ -25,5 +25,15 @@ Result mh::Npc::come() {
 Result mh::Npc::realCome() {
   return {1, "not impl"};
 }
+Result mh::Npc::clickMe() {
+  return Result(0, "");
+}
+
+void mh::Npc::chat(int choice) {
+
+}
+Result mh::Npc::takeBaotuTask(BaotuTaskInfo *info) {
+  return Result(0, "");
+}
 
 

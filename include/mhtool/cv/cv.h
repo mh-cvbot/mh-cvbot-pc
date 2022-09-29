@@ -6,8 +6,4 @@
 #define MH_TOOL_CV_H
 #include "./cv_util.h"
 #include "./cv_pos_indicator.h"
-namespace mh {
-namespace cv {
-}
-}
 #endif //MH_TOOL_CV_H

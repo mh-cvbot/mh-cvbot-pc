@@ -34,7 +34,7 @@ void MHMainLoop::run() {
         continue;
       }
 
-      cv::Mat mat;
+      ::cv::Mat mat;
       // 为什么这里又不对了？
       // 难道是qt的问题，还是opencv的问题呢？
       MH::inst()->gameWin()->screenshot(mat, 2);
@@ -45,7 +45,7 @@ void MHMainLoop::run() {
 
 
       mh::PosIndicator pos;
-      auto success = mh::Cv::posIndicator(mat, &pos);
+      auto success = mh::cv1::posIndicator(mat, &pos);
       std::cout << "pos: " << pos << std::endl;
 
       if (!success) {

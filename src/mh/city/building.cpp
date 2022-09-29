@@ -16,3 +16,7 @@ Result mh::Building::come() {
   }
   return this->realCome();
 }
+
+Result mh::Building::realCome() {
+  return {0, ""};
+}

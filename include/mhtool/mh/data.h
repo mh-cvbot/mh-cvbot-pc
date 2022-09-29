@@ -9,7 +9,8 @@
 
 namespace mh {
 namespace city {
-  ChangAn *changan;
+// definition of ??
+  extern ChangAn *changan;
 }
 }
 #endif //MH_TOOL_INCLUDE_MHTOOL_MH_DATA_H_

@@ -12,7 +12,7 @@ class PosIndicatorLandMark {
   PosColors *_pcs = nullptr;
 
  public:
-  explicit PosIndicatorLandMark(const cv::Point2i &pos);
+  explicit PosIndicatorLandMark(const ::cv::Point2i &pos);
   ~PosIndicatorLandMark();
 
   PosColors* pcs();

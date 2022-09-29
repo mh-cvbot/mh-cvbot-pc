@@ -11,10 +11,8 @@
 #include <QToolBar>
 #include <QPushButton>
 #include <QStatusBar>
-#include <chrono>
 #include <QVBoxLayout>
 #include "mhtool/task/baotu_task.h"
-#include <mhtool/comm/log.h>
 
 #define WIDTH 800
 #define HEIGHT 600

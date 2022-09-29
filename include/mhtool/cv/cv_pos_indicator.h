@@ -9,7 +9,7 @@
 #include "mhtool/mh/pos_indicator.h"
 
 namespace mh {
-namespace Cv {
+namespace cv1 {
 bool posIndicatorState(const ::cv::Mat &mat, mh::PosIndicatorState *out);
 bool posIndicator(const ::cv::Mat &mat, PosIndicator *out);
 }

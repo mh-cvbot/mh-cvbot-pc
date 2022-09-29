@@ -4,6 +4,8 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+add_definitions(-DNOMINMAX)
+
 list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
 list(FILTER SRC_LIB EXCLUDE REGEX ".*pch.cc$")
 
@@ -27,7 +29,7 @@ target_link_libraries(mh-tool-lib
         libtesseract)
 
 
-add_executable(mh-tool ${SRC_LIB} main.cc preview/preview_ui.cc preview/preview_ui.h)
+add_executable(mh-tool ${SRC_LIB} main.cc preview/preview_ui.cc preview/preview_ui.h mh/data.cc)
 target_link_libraries(mh-tool mh-tool-lib)
 
 SET_TARGET_PROPERTIES(mh-tool PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
