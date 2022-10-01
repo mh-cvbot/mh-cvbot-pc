@@ -3,6 +3,7 @@
 //
 #include <QApplication>
 
+#include <iostream>
 #include "./preview/preview_ui.h"
 
 int main(int argc, char **argv) {
@@ -11,8 +12,10 @@ int main(int argc, char **argv) {
 //    std::cout << "current dir: " << NPath << std::endl;
 
     QApplication q(argc, argv);
-    auto *preview = new PreviewUI(nullptr);
-    preview->show();
+
+    std::cout << "5" << std::endl;
+    PreviewUI preview;
+    preview.show();
 
     return QApplication::exec();
 }
