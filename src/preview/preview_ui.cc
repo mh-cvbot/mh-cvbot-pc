@@ -1,5 +1,1 @@
-//
-// Created by huhua on 2022/9/24.
-//
-
-#include "preview_ui.h"
+//// Created by huhua on 2022/9/24.//#include <QStatusBar>#include "./preview_ui.h"#include <mhtool/util/util_qt.h>static int PREVIEW_CONFIG_INIT_WIDTH = 800;static int PREVIEW_CONFIG_INIT_HEIGHT = 600;// why you can't find?PreviewUI::PreviewUI(QWidget *parent): QMainWindow(parent) {  label = new QLabel(nullptr);  // how about an empty for now.  this->resize(PREVIEW_CONFIG_INIT_WIDTH, PREVIEW_CONFIG_INIT_HEIGHT);  setCentralWidget(label);  auto win = mh::MH::inst()->gameWin();  win->screenshot(cacheSnap);  if (this->width() != cacheSnap.size().width || this->height() != cacheSnap.size().height) {    this->resize(cacheSnap.size().width, cacheSnap.size().height);  }  // how to do this?  std::cout << "size: " << cacheSnap.size() << std::endl;//  statusBar()->showMessage(QString("size: %1-%2").arg(cacheSnap.size().width,  auto qImage = mat2QImage(cacheSnap);  // any better idea?//  auto qPixmap = QPixmap::fromImage(qImage);//  label->setPixmap(qPixmap);}

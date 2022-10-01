@@ -232,7 +232,7 @@ int MH::startedCount() {
 }
 
 MH::MH(): _pTab(0), _pMain(0), _gameWin(nullptr), _win(nullptr) {
-
+  refresh();
 }
 
 void MH::refresh() {

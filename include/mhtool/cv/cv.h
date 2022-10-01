@@ -4,6 +4,6 @@
 
 #ifndef MH_TOOL_CV_H
 #define MH_TOOL_CV_H
-#include "./cv_util.h"
-#include "./cv_pos_indicator.h"
+#include "mhtool/cv/cv_util.h"
+#include "mhtool/cv/cv_pos_indicator.h"
 #endif //MH_TOOL_CV_H

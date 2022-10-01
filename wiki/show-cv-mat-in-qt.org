@@ -1,0 +1,3 @@
+#+begin_src cpp
+QImage((unsigned char *) mat.data, mat.cols, mat.rows, mat.step, QImage::Format_RGB888);
+#+end_src

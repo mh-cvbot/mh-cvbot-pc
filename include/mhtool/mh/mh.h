@@ -9,23 +9,27 @@
 #include "mhtool/mh/mh_path.h"
 #include "mhtool/comm/Result.h"
 #include "easybot/easybot.h"
-#include "./pos_indicator.h"
+#include "mhtool/mh/pos_indicator.h"
+#include <opencv2/opencv.hpp>
 
+// is you right??
 namespace mh {
-/**
- * withOk, for now, only consider for just on account
- */
 class MH {
  private:
   eb::Process _pTab;
   eb::Process _pMain;
   eb::Window _win;
   eb::Window _gameWin;
+  static MH* _inst;
 
  public:
   MH();
-  static MH* _inst;
+
+  /**
+   * single instance.
+   */
   static MH* inst();
+
   void refresh();
   eb::Window *gameWin();
   eb::Process *pMain();

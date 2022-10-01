@@ -5,7 +5,7 @@
 #include <easybot/easybot.h>
 #include "mhtool/mh/mh.h"
 #include <mhtool/mh/mh_main_loop.h>
-#include <mhtool/cv/cv.h>
+#include "mhtool/cv/cv.h"
 #include <thread>
 
 static long minDuration = 1000;

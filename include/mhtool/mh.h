@@ -4,5 +4,5 @@
 
 #ifndef MH_TOOL_INCLUDE_MHTOOL_MH_H_
 #define MH_TOOL_INCLUDE_MHTOOL_MH_H_
-#include "./mh/mh.h"
+#include "mhtool/mh/mh.h"
 #endif //MH_TOOL_INCLUDE_MHTOOL_MH_H_
