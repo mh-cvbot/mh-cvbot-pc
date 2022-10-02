@@ -12,16 +12,10 @@ add_definitions(-DNOMINMAX)
 list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
 list(FILTER SRC_LIB EXCLUDE REGEX ".*pch.cc$")
 
-message("SRC_LIB: ${SRC_LIB}")
-
-
-# why you not complain?
-# Still I can't find the tesseract name.
 find_package(Tesseract REQUIRED)
 
 add_library(mh-tool-lib ${SRC_LIB})
 
-# public and interface will not work
 target_include_directories(mh-tool-lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
@@ -32,7 +26,7 @@ target_link_libraries(mh-tool-lib
         libtesseract)
 
 
-add_executable(mh-tool ${SRC_LIB} main.cc preview/preview_ui.cc preview/preview_ui.h mh/data.cc)
+add_executable(mh-tool ${SRC_LIB} main.cc preview/preview_ui.cc preview/preview_ui.h mh/data.cc core/static_region/static_region.cc core/static_region/static_region.h)
 target_link_libraries(mh-tool mh-tool-lib)
 
 SET_TARGET_PROPERTIES(mh-tool PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")

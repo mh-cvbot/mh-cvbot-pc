@@ -7,15 +7,11 @@
 #include "./preview/preview_ui.h"
 
 int main(int argc, char **argv) {
-//    TCHAR NPath[MAX_PATH];
-//    GetCurrentDirectory(MAX_PATH, NPath);
-//    std::cout << "current dir: " << NPath << std::endl;
+  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+  QApplication q(argc, argv);
 
-    QApplication q(argc, argv);
+//  PreviewUI preview;
+//  preview.show();
 
-    std::cout << "5" << std::endl;
-    PreviewUI preview;
-    preview.show();
-
-    return QApplication::exec();
+  return QApplication::exec();
 }

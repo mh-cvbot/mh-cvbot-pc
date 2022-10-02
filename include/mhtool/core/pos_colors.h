@@ -16,7 +16,11 @@ class PosColors {
   explicit PosColors(std::vector<PosColor> pPosColors);
 
  public:
-  bool check(const ::cv::Mat & mat);
+  inline bool check(const ::cv::Mat & mat) {
+    return check(mat, 0);
+  }
+
+  bool check(const ::cv::Mat & mat, int mistake);
 
   friend std::ostream& operator<<(std::ostream& os, const PosColors& thiz);
 };

@@ -12,15 +12,15 @@ PosColors::PosColors(std::vector<PosColor> pPosColors) {
   this->posColors = std::move(pPosColors);
 }
 
-bool PosColors::check(const cv::Mat &mat) {
+bool PosColors::check(const cv::Mat &mat, int mistake) {
   for (auto pc: this->posColors) {
-//    std::cout << "pc: " << pc << std::endl;
-    if (!pc.check(mat)) {
+    if (!pc.check(mat, mistake)) {
       return false;
     }
   }
   return true;
 }
+
 std::ostream &operator<<(std::ostream &os, const PosColors &thiz) {
   os << "PosColors(";
   for (const auto& pc: thiz.posColors) {
