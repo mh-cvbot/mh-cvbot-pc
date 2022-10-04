@@ -2,9 +2,7 @@
 // Created by huhua on 2022/1/24.
 //
 #include "mhtool/cv/cv.h"
-#include "mhtool/core/pos_colors.h"
-#include <mhtool/cv/cv_pos_indicator.h>
-#include <mhtool/cv/cv_util.h>
+#include "mhtool/core/pos_color/pos_colors.h"
 #include "./pos_indicator_land_mark.h"
 #include <tesseract/baseapi.h>
 #include <opencv2/opencv.hpp>
@@ -44,8 +42,6 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
     // try double you
     ::cv::Mat _mat;
     ::cv::resize(_mat1, _mat, ::cv::Size(_mat1.size().width * 2, _mat1.size().height * 2), 0, 0, ::cv::INTER_NEAREST);
-//    ::cv::imshow("test", _mat);
-//    ::cv::waitKey(0);
 
     auto *tess = new tesseract::TessBaseAPI();
     // 为什么mac上可以出来？？
@@ -55,7 +51,8 @@ bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
     }
 
     tess->SetPageSegMode(tesseract::PSM_SINGLE_LINE);
-    tess->SetImage(_mat.data, _mat.cols, _mat.rows, _mat.channels(), _mat.step);
+    tess->SetImage(_mat.data, _mat.cols, _mat.rows, _mat.channels(),
+                   static_cast<int>(_mat.step));
 
     // 为什么返回的string不能被regex？
     auto _rstText = tess->GetUTF8Text();

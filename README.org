@@ -1,3 +1,6 @@
+* Build
+- you need config generator as visual stuido 2012, not nmake
+
 * TODOS
 - how to cv the little map regsion?
 - logView add error log

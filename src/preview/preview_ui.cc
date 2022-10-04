@@ -24,7 +24,6 @@ void PreviewUI::preview(const cv::Mat& mat) {
   }
   cv::Mat out;
   cv::cvtColor(mat, out, cv::COLOR_BGR2RGB);
-//  statusBar()->showMessage(QString("size: %1-%2").arg(mat.size().width, mat.size().height));
   auto qImage = mat2QImage(out);
   auto qPixmap = QPixmap::fromImage(qImage);
   label->setPixmap(qPixmap);
@@ -33,20 +32,5 @@ void PreviewUI::preview(const cv::Mat& mat) {
 PreviewUI::~PreviewUI() {
   if (!previewThread->isFinished()) {
     previewThread->quit();
-  }
-}
-
-void PreviewThread::run() {
-  std::cout << "PreviewThread::run() called" << std::endl;
-  auto win = mh::MH::inst()->gameWin();
-
-  while (true) {
-    if (isFinished()) {
-      break;
-    }
-    cv::Mat mat;
-    win->screenshot(mat, 2);
-//    std::cout << "emit called" << std::endl;
-    emit onPreviewGot(mat);
   }
 }

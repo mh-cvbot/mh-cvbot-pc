@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include "./preview/preview_ui.h"
+#include "./app/app.h"
 
 int main(int argc, char **argv) {
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -12,6 +13,8 @@ int main(int argc, char **argv) {
 
 //  PreviewUI preview;
 //  preview.show();
+  App app;
+  app.show();
 
   return QApplication::exec();
 }

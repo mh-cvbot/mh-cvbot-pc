@@ -2,17 +2,13 @@
 // Created by huhua on 2021/9/27.
 //
 
-#include "App.h"
+#include "./app.h"
+#include <QtWidgets>
 #include <iostream>
-#include <QApplication>
-#include <QDesktopWidget>
-#include <QScreen>
-#include <QDockWidget>
-#include <QToolBar>
-#include <QPushButton>
-#include <QStatusBar>
-#include <QVBoxLayout>
 #include "mhtool/task/baotu_task.h"
+#include <pictool/pictool.h>
+#include <mhtool/mh/mh.h>
+#include <mhtool/core/cv/game_state_cv.h>
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -63,6 +59,14 @@ void App::createToolBars() {
   auto screenshot = new QPushButton("截图", this);
   toolbar->addWidget(screenshot);
   connect(screenshot, &QPushButton::clicked, this, &App::screenshot);
+
+  auto pictool = new QPushButton("&Pictool", this);
+  toolbar->addWidget(pictool);
+  connect(pictool, &QPushButton::clicked, this, &App::doPictool);
+
+  auto debug = new QPushButton("&Debug", this);
+  toolbar->addWidget(debug);
+  connect(debug, &QPushButton::clicked, this, &App::debug);
 }
 
 void App::start() {
@@ -111,4 +115,22 @@ void App::screenshot() {
   }
 //    auto window = this->mhWindow->contentWindow();
 //    runtime::screenshot(window);
+}
+
+void App::doPictool() {
+  cv::Mat out;
+  mh::MH::inst()->gameWin()->screenshot(out, 2);
+  pt::open(out);
+}
+
+void App::debug() {
+  auto mh = mh::MH::inst();
+  cv::Mat mat;
+  mh->gameWin()->screenshot(mat, 2);
+  cv::Mat out;
+  cv::cvtColor(mat, out, cv::COLOR_BGR2RGB);
+  GameStateCV cv;
+  auto gameState = cv.cv(out);
+  std::cout << "gameState: " << gameState << std::endl;
+//  std::cout << "debug called" << std::endl;
 }

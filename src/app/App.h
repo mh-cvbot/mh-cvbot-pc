@@ -6,10 +6,10 @@
 #define MH_TOOL_APP_H
 #include <QMainWindow>
 #include <QPushButton>
-#include <easybot/easybot.h>
+#include "easybot/easybot.h"
 #include "mhtool/mh/mh_window.h"
-#include <mhtool/mh/mh_main_loop.h>
-#include "./component/log/log_view.h"
+#include "mhtool/mh/mh_main_loop.h"
+#include "../ui/component/log/log_view.h"
 
 class App : public QMainWindow {
  private:
@@ -31,6 +31,8 @@ class App : public QMainWindow {
   void start();
   void stop();
   void screenshot();
+  void doPictool();
+  void debug();
 
  public:
   App();

@@ -8,16 +8,7 @@
 #include <QtWidgets>
 #include <opencv2/opencv.hpp>
 #include "mhtool/mh/mh.h"
-
-// 怎么通信？
-class PreviewThread: public QThread {
- Q_OBJECT
- protected:
-  void run() override;
- public:
- signals:
-  void onPreviewGot(const cv::Mat &mat);
-};
+#include "./core/preview_thread.h"
 
 class PreviewUI: public QMainWindow {
   Q_OBJECT

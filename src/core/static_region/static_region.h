@@ -6,7 +6,8 @@
 #define MH_CVBOT_SRC_CORE_STATIC_REGION_STATIC_REGION_H_
 
 #include <string>
-#include <mhtool/core/pos_colors.h>
+#include <utility>
+#include "mhtool/core/pos_color/pos_colors.h"
 
 /**
  * Static region是通过某些特殊的像素点来识别是否匹配
@@ -16,17 +17,14 @@
  */
 class StaticRegion {
  public:
-  inline StaticRegion(std::string name, PosColors *posColors) {
-    StaticRegion(name, posColors, name);
-  }
+  StaticRegion(std::string name, PosColors posColors);
+  StaticRegion(std::string name, PosColors posColors, std::string desc);
 
-  StaticRegion(std::string name, PosColors *posColors, std::string desc);
-
+  bool check(const cv::Mat &mat);
  private:
   std::string name;
   std::string desc;
-  // ?? copy?
-  PosColors *posColors;
+  PosColors posColors;
 };
 
 #endif //MH_CVBOT_SRC_CORE_STATIC_REGION_STATIC_REGION_H_

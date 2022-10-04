@@ -3,14 +3,10 @@
 //
 
 
-#include "mhtool/core/pos_colors.h"
+#include "mhtool/core/pos_color/pos_colors.h"
 
 #include <utility>
 #include <iostream>
-
-PosColors::PosColors(std::vector<PosColor> pPosColors) {
-  this->posColors = std::move(pPosColors);
-}
 
 bool PosColors::check(const cv::Mat &mat, int mistake) {
   for (auto pc: this->posColors) {
@@ -29,3 +25,5 @@ std::ostream &operator<<(std::ostream &os, const PosColors &thiz) {
   os << ")";
   return os;
 }
+
+PosColors::PosColors(std::vector<PosColor> pPosColors): posColors(std::move(pPosColors)) {}

@@ -13,20 +13,19 @@ list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
 list(FILTER SRC_LIB EXCLUDE REGEX ".*pch.cc$")
 
 find_package(Tesseract REQUIRED)
-
-add_library(mh-tool-lib ${SRC_LIB})
-
-target_include_directories(mh-tool-lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
-
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
-
 find_package(Boost REQUIRED COMPONENTS system filesystem)
-target_link_libraries(mh-tool-lib
-        ${OpenCV_LIBS} easybot Qt5::Widgets Boost::filesystem
+
+add_library(${PROJECT_NAME}-lib ${SRC_LIB})
+target_include_directories(${PROJECT_NAME}-lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+target_link_libraries(${PROJECT_NAME}-lib
+        easybot
+        pictool_lib
+        ${OpenCV_LIBS}
+        Qt5::Widgets Boost::filesystem
         libtesseract)
 
+add_executable(${PROJECT_NAME} ${SRC_LIB} main.cc)
+target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)
 
-add_executable(mh-tool ${SRC_LIB} main.cc preview/preview_ui.cc preview/preview_ui.h mh/data.cc core/static_region/static_region.cc core/static_region/static_region.h)
-target_link_libraries(mh-tool mh-tool-lib)
-
-SET_TARGET_PROPERTIES(mh-tool PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
+SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
