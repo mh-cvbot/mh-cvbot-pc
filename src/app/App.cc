@@ -110,11 +110,21 @@ void App::refreshStartUi() {
 
 void App::screenshot() {
   if (!this->hasStarted) {
+    // TODO: how to do a qt toast?
     std::cout << "not started" << std::endl;
     return;
   }
-//    auto window = this->mhWindow->contentWindow();
-//    runtime::screenshot(window);
+
+  // how to do this screenshot?
+  auto documentLocation = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+  auto fullPath = QDir(documentLocation);
+  auto outPath = fullPath.filePath(QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss-zzz")
+      + ".bmp");
+  std::cout << "path: " << outPath.toStdString() << std::endl;
+  auto gameWin = MH::inst()->gameWin();
+  cv::Mat out;
+  gameWin->screenshot(out, 2);
+  cv::imwrite(outPath.toStdString(), out);
 }
 
 void App::doPictool() {
@@ -125,12 +135,17 @@ void App::doPictool() {
 
 void App::debug() {
   auto mh = mh::MH::inst();
-  cv::Mat mat;
-  mh->gameWin()->screenshot(mat, 2);
-  cv::Mat out;
-  cv::cvtColor(mat, out, cv::COLOR_BGR2RGB);
-  GameStateCV cv;
-  auto gameState = cv.cv(out);
-  std::cout << "gameState: " << gameState << std::endl;
+  auto win = mh->gameWin();
+//  cv::Mat mat;
+//  mh->gameWin()->screenshot(mat, 2);
+//  cv::Mat out;
+//  cv::cvtColor(mat, out, cv::COLOR_BGR2RGB);
+//  GameStateCV cv;
+//  auto gameState = cv.cv(out);
+//  std::cout << "gameState: " << gameState << std::endl;
 //  std::cout << "debug called" << std::endl;
+  // how to do this?
+  win->moveCursor(716 * 2, 543 * 2);
+  Sleep(30);
+  eb::smartClick();
 }
