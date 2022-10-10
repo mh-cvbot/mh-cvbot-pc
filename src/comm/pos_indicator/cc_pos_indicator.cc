@@ -27,7 +27,7 @@ bool posIndicatorState(const ::cv::Mat &mat, mh::PosIndicatorState *out) {
 }
 
 // how to deal with you??
-bool posIndicator(const ::cv::Mat &mat, PosIndicator *out) {
+bool posIndicator(const ::cv::Mat &mat, GamePos *out) {
   auto tmp = posIndicatorState(mat, &out->state);
 //  std::cout << "tmp: " << tmp << ", state: " << out->state << std::endl;
   if (!tmp) {

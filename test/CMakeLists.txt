@@ -31,7 +31,10 @@ function(addTest name needRoot)
     )
 
     gtest_discover_tests(${name})
-    target_link_libraries(${name} ${OpenCV_LIBS} mh-tool-lib)
+    target_link_libraries(${name}
+            ${OpenCV_LIBS}
+            easybot
+            ${PROJECT_NAME}-lib)
     target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
     if(${needRoot})
         SET_TARGET_PROPERTIES(${name} PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")

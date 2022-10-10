@@ -3,7 +3,8 @@
 //
 
 #include <gtest/gtest.h>
-#include <qt_windows.h>
+//#include <qt_windows.h>
+#include <windows.h>
 #include <TlHelp32.h>
 #include <iostream>
 #include <opencv2/opencv.hpp>
@@ -53,11 +54,11 @@ static void ListProcessModules(DWORD pid) {
     do {
         printf("\n\n    Module Name: %s", me32.szModule);
         printf("\n    Executable: %s", me32.szExePath);
-        printf("\n    Process ID: 0x%08X", me32.th32ProcessID);
-        printf("\n    Ref Count (g): 0x%04X", me32.GlblcntUsage);
-        printf("\n    Ref Count (p): 0x%04X", me32.ProccntUsage);
-        printf("\n    Base Address: 0x%08X", me32.modBaseAddr);
-        printf("\n    Base Size:%d", me32.modBaseSize);
+        printf("\n    Process ID: 0x%08lX", me32.th32ProcessID);
+        printf("\n    Ref Count (g): 0x%04lX", me32.GlblcntUsage);
+        printf("\n    Ref Count (p): 0x%04lX", me32.ProccntUsage);
+        printf("\n    Base Address: 0x%8s", me32.modBaseAddr);
+        printf("\n    Base Size:%lu", me32.modBaseSize);
     } while (Module32Next(hModuleSnap, &me32));
 
     CloseHandle(hModuleSnap);

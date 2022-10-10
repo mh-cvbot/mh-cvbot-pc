@@ -9,7 +9,7 @@
 #include "mhtool/mh/mh_path.h"
 #include "mhtool/comm/Result.h"
 #include "easybot/easybot.h"
-#include "mhtool/mh/pos_indicator.h"
+#include "mhtool/model/game_pos.h"
 #include <opencv2/opencv.hpp>
 
 // is you right??
@@ -54,11 +54,11 @@ class MH {
 
   MhPath getPath();
 
-  PosIndicator pos(bool waitStop = false);
+  GamePos pos(bool waitStop = false);
 
   void waitStop();
 
-  Result goByMouseClick(const PosIndicator &pos, const eb::Pos &dst);
+  Result goByMouseClick(const GamePos &pos, const eb::Pos &dst);
 
   Result goByLittleMap(const eb::Pos &dst);
 };

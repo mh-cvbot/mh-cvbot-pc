@@ -285,7 +285,7 @@ Result MH::goByLittleMap(const eb::Pos &dst) {
   return Result(0, "");
 }
 
-Result MH::goByMouseClick(const PosIndicator &pos, const eb::Pos &dst) {
+Result MH::goByMouseClick(const GamePos &pos, const eb::Pos &dst) {
   return Result(0, "");
 }
 
@@ -293,6 +293,6 @@ void MH::waitStop() {
 
 }
 
-PosIndicator MH::pos(bool waitStop) {
-  return PosIndicator();
+GamePos MH::pos(bool waitStop) {
+  return GamePos();
 }

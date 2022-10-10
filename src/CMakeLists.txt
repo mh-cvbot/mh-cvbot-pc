@@ -23,7 +23,7 @@ target_link_libraries(${PROJECT_NAME}-lib
         pictool_lib
         ${OpenCV_LIBS}
         Qt5::Widgets Boost::filesystem
-        libtesseract)
+        Tesseract::libtesseract)
 
 add_executable(${PROJECT_NAME} ${SRC_LIB} main.cc)
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)

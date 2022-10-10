@@ -2,31 +2,31 @@
 // Created by th on 2022/1/31.
 //
 
-#include "mhtool/mh/pos_indicator.h"
+#include "mhtool/model/game_pos.h"
 #include <iostream>
 #include <mhtool/config.h>
 
 using namespace mh;
 
-bool mh::PosIndicator::operator==(const PosIndicator &other) {
+bool mh::GamePos::operator==(const GamePos &other) {
   return this->pos == other.pos
     && this->state == other.state;
 }
 
-bool mh::operator==(const mh::PosIndicator &thiz, const mh::PosIndicator &other) {
+bool mh::operator==(const mh::GamePos &thiz, const mh::GamePos &other) {
   return thiz.pos == other.pos
       && thiz.state == other.state;
 }
 
-std::ostream &mh::operator<<(std::ostream &os, const mh::PosIndicator &thiz) {
+std::ostream &mh::operator<<(std::ostream &os, const mh::GamePos &thiz) {
   os << thiz.state << " " << thiz.pos;
   return os;
 }
 
-bool PosIndicator::isNear(const eb::Pos &other) {
+bool GamePos::isNear(const eb::Pos &other) {
   return this->pos.isNear(other, Config::DISTANCE_NEAR);
 }
 
-bool PosIndicator::isNear(const PosIndicator &indicator) {
+bool GamePos::isNear(const GamePos &indicator) {
   return indicator.name == this->name && isNear(indicator.pos);
 }
