@@ -3,4 +3,4 @@ cmake-build-debug/
 *build*/
 .vscode/
 /runtime/
-external/easybot
+external/
