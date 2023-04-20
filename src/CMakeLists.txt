@@ -9,7 +9,7 @@ set(CMAKE_AUTOUIC ON)
 
 add_definitions(-DNOMINMAX)
 
-list(FILTER SRC_LIB EXCLUDE REGEX ".*main.cc$")
+list(FILTER SRC_LIB EXCLUDE REGEX ".*main_gui.cc$")
 list(FILTER SRC_LIB EXCLUDE REGEX ".*pch.cc$")
 
 find_package(Tesseract REQUIRED)
@@ -26,8 +26,6 @@ target_link_libraries(${PROJECT_NAME}-lib
         Qt5::Widgets Boost::filesystem
         Tesseract::libtesseract)
 
-add_executable(${PROJECT_NAME} ${SRC_LIB} main.cc)
-#message("opencv_lib: ${OpenCV_LIBS}")
-target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib ${OpenCV_LIBS})
-
-SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
+add_executable(mh-cvbot-gui ${SRC_LIB} gui/main_gui.cc)
+target_link_libraries(mh-cvbot-gui ${PROJECT_NAME}-lib ${OpenCV_LIBS})
+SET_TARGET_PROPERTIES(mh-cvbot-gui PROPERTIES LINK_FLAGS  "/MANIFESTUAC:\"level='requireAdministrator'\"")
