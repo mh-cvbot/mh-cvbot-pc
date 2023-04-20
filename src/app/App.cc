@@ -8,7 +8,7 @@
 #include "mhtool/task/baotu_task.h"
 #include <pictool/pictool.h>
 #include <mhtool/mh/mh.h>
-#include <mhtool/core/cv/game_state_cv.h>
+#include <opencv2/opencv.hpp>
 
 #define WIDTH 800
 #define HEIGHT 600

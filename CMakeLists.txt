@@ -25,8 +25,8 @@ find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 include(cmake/create_external_easybot.cmake)
-add_subdirectory(external/easybot)
-add_subdirectory(external/pictool)
+add_subdirectory(../easybot easybot)
+add_subdirectory(../pictool pictool)
 
 add_subdirectory(src)
 add_subdirectory(test)
